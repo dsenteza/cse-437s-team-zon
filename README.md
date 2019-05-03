@@ -78,8 +78,8 @@ Team Amazon Book finder provides:
 
 <!--  -->
 
-    1. Washington University Campus Store
-    1. Fontbonne Bookstore
-    1. Subterranean Books
-    1. Left Bank Books
-    1. The Wizards Wagon
+- Washington University Campus Store
+- Fontbonne Bookstore
+- Subterranean Books
+- Left Bank Books
+- The Wizards Wagon
