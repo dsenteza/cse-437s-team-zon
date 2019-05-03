@@ -71,9 +71,11 @@ $mysqli = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
       <div class="col-md-2 bookImg"><img src="'.$image_url.'"/></div>
       <!-- book description -->
       <div class="col-md-2">
-        <h1>'.htmlspecialchars($title).'</h1>
-        <h2><span>Author: </span>'.htmlspecialchars($author).'</h2>
-        <p>'.htmlspecialchars($category).'</p>
+        <div class="authorInfo">
+          <h1>'.htmlspecialchars($title).'</h1>
+          <h2><span>Author: </span>'.htmlspecialchars($author).'</h2>
+          <p>'.htmlspecialchars($category).'</p>
+        </div>
         <!-- list of bookstores nearby -->
         <div class="bookstores">
           <div class="store">
@@ -86,11 +88,37 @@ $mysqli = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
         </div>
       </div>
       <!-- map -->
-      <div class="col-md-4"></div>
+      <div class="col-md-4 mapSec">
+        <p>*call bookstores for prices*</p>
+        <div class="map"></div>
+      </div>
       <!-- recommendations -->
-      <div class="col-md-2"></div>
-      <!-- edge spacer -->
-      <div class="col-md-1"></div>
+      <div class="col-md-2 studyRecs">
+        <h2>Recommendations</h2>
+        <div class="rec">
+          <div class="recImg">
+            <!--put recommendation image here-->
+          </div>
+          <a href="#">Rec Name</a>
+        </div>
+        <div class="rec">
+          <div class="recImg">
+            <!--put recommendation image here-->
+          </div>
+          <a href="#">Rec Name</a>
+        </div>
+        <div class="rec">
+          <div class="recImg">
+            <!--put recommendation image here-->
+          </div>
+          <a href="#">Rec Name</a>
+        </div>
+        <div class="rec">
+          <div class="recImg">
+            <!--put recommendation image here-->
+          </div>
+          <a href="#">Rec Name</a>
+        </div>
     </div>';
     ?>
     <!-- recommendations -->
