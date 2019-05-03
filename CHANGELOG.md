@@ -1,8 +1,8 @@
-#Changelog
+# Changelog
 
 Changes are grouped by version
 
-##0.5.0 - 4/10/2019
+## 0.5.0 - 4/10/2019
 
 - [0c666c5] index.php edited online with Bitbucket
 - [1fe68c7] changed team name on website
