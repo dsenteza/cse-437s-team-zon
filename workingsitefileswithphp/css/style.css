@@ -15,14 +15,21 @@ body, html {
   background-color: #D5C3AA;
   height: 75px;
   margin-bottom: 60px;
+  padding-top: 25px;
 }
 
-.navBar a:nth-of-type(2) {
+.navBar a:first-of-type {
+  position: relative;
+  bottom: 20px;
+}
+
+.navBar a:nth-of-type(2), .navBar a:nth-of-type(3), .navBar a:nth-of-type(4) {
   color: #662316;
   text-decoration: none;
+  font-size: 1.2em;
 }
 
-.navBar a:nth-of-type(2):hover {
+.navBar a:nth-of-type(2):hover, .navBar a:nth-of-type(3):hover, .navBar a:nth-of-type(4):hover {
   color: #BA5536;
 }
 
@@ -73,12 +80,12 @@ form input:first-of-type {
   background-color: #867666;
 }
 
+.store, .storeName {
+  color: #867666;
+}
+
 .distance {
-  border-left-style: solid;
-  border-left-color: #E1B80D;
-  margin-left: 20px;
-  padding-left: 10px;
-  color: #E1B800;
+  color: #BA5536;
 }
 
 .searchResult {
@@ -86,6 +93,10 @@ form input:first-of-type {
 }
 
 /* book detail page */
+.details {
+  margin-left: auto;
+  margin-right: auto;
+}
 .bookImg {
   height: 400px;
   width: 120px;
@@ -97,14 +108,80 @@ span {
   font-style: italic;
 }
 
+.authorInfo {
+  height: 34%;
+}
+
+.authorInfo h2 {
+  font-size: 2em;
+}
+
 .bookstores {
-  border-left-style: solid;
-  border-left-color: #BA5536;
-  margin-left: 20px;
+  height: 66%;
+  padding-top: 15px;
+  overflow: scroll;;
 }
 
 .storeName {
   color: #BA5536;
+}
+
+.mapSec {
+  border-right-style: solid;
+  border-right-color: #E1B80D;
+  padding-right: 60px;
+  padding-bottom: 40px;
+}
+
+.mapSec p {
+  font-style: italic;
+  color: #E1B80D;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+  margin-left: 15px;
+  padding: 25px;
+  background-color: #D5C3AA ;
+}
+
+.studyRecs {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.studyRecs h2 {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #E1B80D;
+}
+
+.rec {
+  width: 50%;
+  height: 50%;
+  float: left;
+  padding-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.rec div {
+  width: 90%;
+  height: 80%;
+  background-color: #D5C3AA;
+}
+
+.rec a {
+  color: #662316;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 100%;
+  height: 15%;
+  margin-top: 2px;
 }
 
 hr {
