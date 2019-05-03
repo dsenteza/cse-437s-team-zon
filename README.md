@@ -68,8 +68,9 @@ Team Amazon Book finder provides:
 
 ## Resources
 
-Slides from product announcement
-Slides from beta release
+\*[Slides from product announcement](https://drive.google.com/file/d/1sfGm8OYDoZwespeqlPC3RSoLVp3tziZj/view?usp=sharing)
+
+\*[Slides from beta release](https://drive.google.com/file/d/1CEPaFG4mx-Dp-ZrIQHSto34NAnBoChoT/view?usp=sharing)
 
 <!-- slides from mvp -->
 
