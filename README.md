@@ -28,7 +28,7 @@ SOFTWARE.-->
 
 # Team Amazon
 
-<img src="../Screenshots/TeamAmazonLogo.png" alt = "Team Amazon Logo" width="500"/>
+<img src="./Screenshots/TeamAmazonLogo.png" alt = "Team Amazon Logo" width="500"/>
 
 <!-- Button that links to our website-->
 
@@ -40,15 +40,15 @@ SOFTWARE.-->
 
 **Search For Books**
 
-<img src="../Screenshots/home.jpg" alt = "Team Amazon Logo"/>
+<img src="./Screenshots/home.jpg" alt = "Home page screenshot"/>
 
 **View Search Results**
 
-<img src="../Screenshots/search_results.jpg" alt = "Team Amazon Logo"/>
+<img src="./Screenshots/search_results.jpg" alt = "search results screenshot"/>
 
 **View Stores that have a certain book in stock**
 
-<img src="../Screenshots/details_with_recommendation.jpg" alt = "Team Amazon Logo"/>
+<img src="./Screenshots/details_with_recommendation.jpg" alt = "details page screenshot"/>
 
 ## Team Amazon Book Finder
 
