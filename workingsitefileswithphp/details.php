@@ -90,7 +90,7 @@ $mysqli = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
       <!-- map -->
       <div class="col-md-4 mapSec">
         <p>*call bookstores for prices*</p>
-        <div class="map"></div>
+        <div class="map" id="map"></div>
       </div>
       <!-- recommendations -->
       <div class="col-md-2 studyRecs">
@@ -133,5 +133,50 @@ $mysqli = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
       <div class="col-md-2 recs"></div>
       </div>
     </div>
+    <p class="location" style="display:none">Subterranean Books</p>
+<p class="location"  style="display:none">Washington University Campus Bookstore</p>
+<p class="location"  style="display:none">Left Bank Books</p>
+    <script>
+    function initMap() {
+        //define the center of the map and its zooming
+        //may adjust it accordingly
+        let option = {
+                zoom: 13,
+                center: {lat: 38.6472923, lng: -90.288}
+
+            },
+            map = new google.maps.Map(document.getElementById('map'), option);
+        let bookstores = document.getElementsByClassName("location");//get the bookstore names from the dom
+        let bookstoreMap  = new Map();//Create a Map to get the location of each bookstore
+        //ADD BOOKSTORES HERE with their locations
+        bookstoreMap.set('Washington University Campus Bookstore', {lat: 38.6472923, lng: -90.3113771});
+        bookstoreMap.set('Subterranean Books', {lat:38.6558431,lng:-90.3047509});
+        bookstoreMap.set('Left Bank Books', {lat:38.6483598,lng:-90.261127});
+
+        //Looping the bookstores and add them to the map
+        for (let i = 0; i < bookstores.length; i++) {
+            let bookstoreName = bookstores[i].innerText.toString();
+            let bookstoreLoc =bookstoreMap .get(bookstoreName);
+            addMarker(bookstoreLoc,bookstoreName);
+
+        }
+        //Function that add marks to the map
+        function addMarker(coords,storeName){
+            let marker = new google.maps.Marker({position:coords,map:map});
+            let names = storeName
+            let url = "https://www.google.com/maps/search/"+storeName.replace(/ /g,'+'); //url for navigation
+            let label ='<h3>'+names+'</h3><a href='+url+' target="_blank">Direction</a>'; //label for each node
+            let infowindow=new google.maps.InfoWindow({content:label});
+            marker.addListener('click',function(){
+                    infowindow.open(map, marker)
+                }
+            );
+
+        }
+    }
+</script>
+<!--Calling google api-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPTRY89JQZBHOgKto1ciw-ghZ8KSDclvY&callback=initMap"
+        async defer></script>
   </body>
 </html>
