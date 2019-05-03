@@ -70,7 +70,7 @@ Team Amazon Book finder provides:
 
 \*[Slides from product announcement](https://drive.google.com/file/d/1sfGm8OYDoZwespeqlPC3RSoLVp3tziZj/view?usp=sharing)
 
-\*[Slides from beta release](https://drive.google.com/file/d/1CEPaFG4mx-Dp-ZrIQHSto34NAnBoChoT/view?usp=sharing)
+\*[Slides from beta release presentation](https://drive.google.com/file/d/1CEPaFG4mx-Dp-ZrIQHSto34NAnBoChoT/view?usp=sharing)
 
 <!-- slides from mvp -->
 
