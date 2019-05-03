@@ -1,4 +1,4 @@
-# #Changelog
+#Changelog
 
 Changes are grouped by version
 
