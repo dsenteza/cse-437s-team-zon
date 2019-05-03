@@ -28,7 +28,7 @@ SOFTWARE.-->
 
 # Team Amazon
 
-<img src="./Screenshots/TeamAmazonLogo.png" alt = "Team Amazon Logo" width="500"/>
+<img src="./Screenshots/TeamAmazonLogo.png" alt = "Team Amazon Logo" width="350"/>
 
 <!-- Button that links to our website-->
 
