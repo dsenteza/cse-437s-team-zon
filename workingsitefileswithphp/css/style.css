@@ -77,7 +77,6 @@ form input:first-of-type {
 .bookCover {
   height: 175px;
   width: 60px;
-  background-color: #867666;
 }
 
 .store, .storeName {
@@ -100,8 +99,8 @@ form input:first-of-type {
 .bookImg {
   height: 400px;
   width: 120px;
-  background-color: #867666;
-  margin-right: 20px;
+/*  background-color: #867666;
+  margin-right: 20px;*/
 }
 
 span {
@@ -222,4 +221,14 @@ h3 {
 
 .content p {
   margin-top: 25px;
+}
+
+.recsgroup{
+  margin-left: 35px;
+  padding: 0;
+  height: 250px;
+  width: 1440px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
 }

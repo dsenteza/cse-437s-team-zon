@@ -19,7 +19,7 @@ session_start();
 ?>
     <!-- navigation bar -->
     <div class="navBar row">
-      <a class="col-md-2"href="index.html"><img src="img/TeamAmazonLogo.png" height="60px" width="60px" alt="Team Amazon Logo"></a>
+      <a class="col-md-2"href="index.php"><img src="img/TeamAmazonLogo.png" height="60px" width="60px" alt="Team Amazon Logo"></a>
       <span class="col-md-4"></span>
       <a class="col-md-2" href="https://github.com/dsenteza/cse-437s-team-zon" target="_blank">Github</a>
       <a class="col-md-2" href="about.html">About</a>
@@ -96,11 +96,11 @@ if($mysqli->connect_errno) {
   exit;
 }
         if(isset($_SESSION['searchTerm']) AND strcmp(htmlentities($_SESSION['searchType']),'isbn')===0){
-    $stmt = $mysqli->prepare("select asin,title,author,category,bookstoredatabase.name from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where asin = '$radio'");
+    $stmt = $mysqli->prepare("select asin,title,author,category,bookstoredatabase.name, image_url from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where asin = '$radio'");
 
     $stmt->execute();
 
-    $stmt->bind_result($asin1,$title,$author,$category,$bookstore);
+    $stmt->bind_result($asin1,$title,$author,$category,$bookstore,$image_url);
 
     $stmt->fetch();
 
@@ -108,9 +108,10 @@ if($mysqli->connect_errno) {
     if ($asin1==$radio){
    echo '<div class="row searchResult">
      <!-- rectangles will be images -->
-     <!-- <img src="???" height="90px" width="60px" -->
+     <!-- <img src="'.htmlspecialchars($image_url).'" height="90px" width="60px" -->
      <div class="col-md-2"></div>
      <div class="col-md-1 bookCover">
+     <img src="'.htmlspecialchars($row["image_url"]).'" height="120px" width="80px"/>
      </div>
      <div class="col-md-5 bookDesc">
       <a href="details.php?isbn='. htmlspecialchars($asin1) .'"><h2>';
@@ -137,7 +138,7 @@ if($mysqli->connect_errno) {
         }
         elseif(isset($_SESSION['searchTerm']) AND strcmp(htmlentities($_SESSION['searchType']),'title')===0){
         //select all of the relevant data to display to the user
-        $stmt = $mysqli->prepare("select asin,title,author,category,bookstoredatabase.name as name from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where LOWER(title) like LOWER('$radio') limit 5");
+        $stmt = $mysqli->prepare("select asin,title,author,category,bookstoredatabase.name as name, image_url from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where LOWER(title) like LOWER('$radio') limit 5");
 
         $stmt->execute();
 
@@ -145,9 +146,10 @@ if($mysqli->connect_errno) {
 	while ($row = $result->fetch_assoc()){
    echo '<div class="row searchResult">
      <!-- rectangles will be images -->
-     <!-- <img src="???" height="90px" width="60px" -->
+     <!-- <img src="'.htmlspecialchars($row['image_url']).'" height="90px" width="60px" -->
      <div class="col-md-2"></div>
      <div class="col-md-1 bookCover">
+     <img src="'.htmlspecialchars($row["image_url"]).'" height="120px" width="80px"/>
      </div>
      <div class="col-md-5 bookDesc">
       <a href="details.php?isbn='. htmlspecialchars($row["asin"]) .'"><h2>';
@@ -172,7 +174,7 @@ if($mysqli->connect_errno) {
 }
      elseif(isset($_SESSION['searchTerm']) AND strcmp(htmlentities($_SESSION['searchType']),'author')===0){
  //select all of the relevant data to display to the user
- $stmt = $mysqli->prepare("select asin,title,author,category,bookstoredatabase.name as name from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where LOWER(author) like LOWER('$radio') limit 5");
+ $stmt = $mysqli->prepare("select asin,title,author,category,bookstoredatabase.name as name, image_url from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where LOWER(author) like LOWER('$radio') limit 5");
 
  $stmt->execute();
 
@@ -181,9 +183,10 @@ if($mysqli->connect_errno) {
 	 while ($row = $result->fetch_assoc()){
    echo '<div class="row searchResult">
      <!-- rectangles will be images -->
-     <!-- <img src="???" height="90px" width="60px" -->
+     <!-- <img src="'.htmlspecialchars($row["image_url"]).'" height="180px" width="120px" -->
      <div class="col-md-2"></div>
      <div class="col-md-1 bookCover">
+     <img src="'.htmlspecialchars($row["image_url"]).'" height="120px" width="80px"/>
      </div>
      <div class="col-md-5 bookDesc">
      <a href="details.php?isbn='. htmlspecialchars($row["asin"]) .'"><h2>';
@@ -210,7 +213,7 @@ if($mysqli->connect_errno) {
 }
      elseif(isset($_SESSION['searchTerm']) AND strcmp(htmlentities($_SESSION['searchType']),'category')===0){
    //select all of the relevant data to display to the user
-   $stmt = $mysqli->prepare("select asin,title,author,category,bookstoredatabase.name as name from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where LOWER(category) like LOWER('$radio') limit 5");
+   $stmt = $mysqli->prepare("select asin,title,author,category,bookstoredatabase.name as name, image_url from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where LOWER(category) like LOWER('$radio') limit 5");
 
    $stmt->execute();
 
@@ -218,9 +221,10 @@ if($mysqli->connect_errno) {
      while ($row = $result->fetch_assoc()){
    echo '<div class="row searchResult">
      <!-- rectangles will be images -->
-     <!-- <img src="???" height="90px" width="60px" -->
+     <!-- <img src="'.htmlspecialchars($row["image_url"]).'" height="90px" width="60px" -->
      <div class="col-md-2"></div>
      <div class="col-md-1 bookCover">
+     <img src="'.htmlspecialchars($row["image_url"]).'" height="120px" width="80px"/>
      </div>
      <div class="col-md-5 bookDesc">
      <a href="details.php?isbn='. htmlspecialchars($row["asin"]) .'"><h2>';

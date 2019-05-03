@@ -15,7 +15,7 @@
   <body>
     <!-- navigation bar -->
     <div class="navBar row">
-      <a class="col-md-2"href="index.html"><img src="img/TeamAmazonLogo.png" height="60px" width="60px" alt="Team Amazon Logo"></a>
+      <a class="col-md-2"href="index.php"><img src="img/TeamAmazonLogo.png" height="60px" width="60px" alt="Team Amazon Logo"></a>
       <span class="col-md-4"></span>
       <a class="col-md-2" href="https://github.com/dsenteza/cse-437s-team-zon" target="_blank">Github</a>
       <a class="col-md-2" href="about.html">About</a>

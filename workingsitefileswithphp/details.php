@@ -15,7 +15,7 @@ session_start();
 ?>
     <!-- navigation bar -->
     <div class="navBar row">
-      <a class="col-md-2"href="index.html"><img src="img/TeamAmazonLogo.png" height="60px" width="60px" alt="Team Amazon Logo"></a>
+      <a class="col-md-2"href="index.php"><img src="img/TeamAmazonLogo.png" height="60px" width="60px" alt="Team Amazon Logo"></a>
       <span class="col-md-4"></span>
       <a class="col-md-2" href="https://github.com/dsenteza/cse-437s-team-zon" target="_blank">Github</a>
       <a class="col-md-2" href="about.html">About</a>
@@ -68,12 +68,12 @@ $mysqli = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
     <!-- edge spacer -->
       <div class="col-md-1"></div>
       <!-- below div will be an image of a book cover -->
-      <div class="col-md-2 bookImg"><img src="'.$image_url.'"/></div>
+      <div class="col-md-2 bookImg"><img src="'.$image_url.'" width="190px" height="270px"/></div>
       <!-- book description -->
       <div class="col-md-2">
         <div class="authorInfo">
           <h1>'.htmlspecialchars($title).'</h1>
-          <h2><span>Author: </span>'.htmlspecialchars($author).'</h2>
+          <h4><span>Author: </span>'.htmlspecialchars($author).'</h4>
           <p>'.htmlspecialchars($category).'</p>
         </div>
         <!-- list of bookstores nearby -->
@@ -123,13 +123,15 @@ $mysqli = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
     ?>
     <!-- recommendations -->
     <hr>
-    <h3>You May Also Like</h3>
+    
     <div class="row">
-      <div class="col-md-3"></div>
+      <h3>You May Also Like</h3>
+      <div class="recsgroup">
       <!-- the below three divs will be book images -->
       <div class="col-md-2 recs"></div>
       <div class="col-md-2 recs"></div>
       <div class="col-md-2 recs"></div>
+      </div>
     </div>
   </body>
 </html>
