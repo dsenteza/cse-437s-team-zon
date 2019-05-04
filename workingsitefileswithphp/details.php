@@ -53,6 +53,8 @@ function getBookstoreAddress($bookstoreName){
 //session_start();
 //session_start();
 //establish connection
+$bookstores = [];
+$i=0;
 $mysqli = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
 
     $stmt = $mysqli->prepare("select asin,title,author,category,image_url,bookstoredatabase.name from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where asin = '$_GET[isbn]'");
@@ -61,7 +63,10 @@ $mysqli = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
 
     $stmt->bind_result($asin1,$title,$author,$category,$image_url,$bookstore);
 
-    $stmt->fetch();
+    while ($stmt->fetch()){
+      $bookstores[$i] = $bookstore;
+      ++$i;
+    }
 
     echo'<!-- book destails -->
     <div class="details row">
@@ -77,15 +82,17 @@ $mysqli = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
           <p>'.htmlspecialchars($category).'</p>
         </div>
         <!-- list of bookstores nearby -->
-        <div class="bookstores">
-          <div class="store">
-            <p class="storeName">'.htmlspecialchars($bookstore).'</p>
+        <div class="bookstores">';
+        foreach ($bookstores as $store){
+          echo '<div class="store">
+            <p class="storeName">'.htmlspecialchars($store).'</p>
             <address>
-              '.getBookstoreAddress($bookstore).'
+              '.getBookstoreAddress($store).'
             </address>
-            <p class="distance">'.getDistance(getBookstoreAddress($bookstore)).' miles away</p>
-          </div>
-        </div>
+            <p class="distance">'.getDistance(getBookstoreAddress($store)).' miles away</p>
+          </div>';
+        }
+          echo '</div>
       </div>
       <!-- map -->
       <div class="col-md-4 mapSec">
