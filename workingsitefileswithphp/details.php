@@ -98,33 +98,49 @@
   <div class="col-md-4 mapSec">
   <p>*call bookstores for prices*</p>
   <div class="map" id="map"></div>
-  </div>
+  </div>';
+  $suggestions = [];
+  $imageurl = [];
+  $i1=0;
+  $mysqli1 = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
+
+  $stmt1 = $mysqli1->prepare("select * from supplementaryitems");
+
+  $stmt1->execute();
+
+  //$stmt1->bind_result($name,$long_name, $num,$manufacturer,$fit,$brand,$vendor,$price,$image_url);
+  $result = $stmt1->get_result();
+  while ($row = $result->fetch_assoc()){
+  //while ($stmt1->fetch()){
+    $suggestions[$i1] = htmlspecialchars($row["Name"]);
+    $imageurl[$i1] = htmlspecialchars($row["Image URL"]);;
+    ++$i1;
+  }
+  
+  $item1 = mt_rand(0,7);
+  $item2 = mt_rand(8,15);
+  $item3 = mt_rand(16,23);
+  $item4 = mt_rand(24,29);
+	
+  echo'
   <!-- recommendations -->
   <div class="col-md-2 studyRecs">
   <h2>Recommendations</h2>
   <div class="rec">
-  <div class="recImg">
-  <!--put recommendation image here-->
-  </div>
-  <a href="#">Rec Name</a>
+  <img src="'.$imageurl[$item1].'" width="100px" height="150px"/>
+  <a href="#">'.$suggestions[$item1].'</a>
   </div>
   <div class="rec">
-  <div class="recImg">
-  <!--put recommendation image here-->
-  </div>
-  <a href="#">Rec Name</a>
+  <img src="'.$imageurl[$item2].'" width="100px" height="150px"/>
+  <a href="#">'.$suggestions[$item2].'</a>
   </div>
   <div class="rec">
-  <div class="recImg">
-  <!--put recommendation image here-->
-  </div>
-  <a href="#">Rec Name</a>
+  <img src="'.$imageurl[$item3].'" width="100px" height="150px"/>
+  <a href="#">'.$suggestions[$item3].'</a>
   </div>
   <div class="rec">
-  <div class="recImg">
-  <!--put recommendation image here-->
-  </div>
-  <a href="#">Rec Name</a>
+  <img src="'.$imageurl[$item4].'" width="100px" height="150px"/>
+  <a href="#">'.$suggestions[$item4].'</a>
   </div>
   </div>';
   ?>
