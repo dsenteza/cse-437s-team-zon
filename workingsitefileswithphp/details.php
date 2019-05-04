@@ -157,55 +157,100 @@
     </div>
   </div>
   <script>
-  // var geocoder = new google.maps.Geocoder();
+  var geocoder;
 
-  // function initMap() {
-  //       //define the center of the map and its zooming
-  //       //may adjust it accordingly
-  //       let option = {
-  //         zoom: 13,
-  //         center: {lat: 38.6472923, lng: -90.288}
+  function initMap() {
+        //define the center of the map and its zooming
+        //may adjust it accordingly
+        let option = {
+          zoom: 13,
+          center: {lat: 38.6472923, lng: -90.288}
 
-  //       },
-  //       map = new google.maps.Map(document.getElementById('map'), option);
-  //       // let bookstores = document.getElementsByClassName("storeName");//get the bookstore names from the dom
-  //       // let bookstoreMap  = new Map();//Create a Map to get the location of each bookstore
-  //       // //ADD BOOKSTORES HERE with their locations
-  //       // bookstoreMap.set('Washington University Campus Bookstore', {lat: 38.6472923, lng: -90.3113771});
-  //       // bookstoreMap.set('Subterranean Books', {lat:38.6558431,lng:-90.3047509});
-  //       // bookstoreMap.set('Left Bank Books', {lat:38.6483598,lng:-90.261127});
+        },
+        map = new google.maps.Map(document.getElementById('map'), option);
+        let bookstores = document.getElementsByClassName("storeName");//get the bookstore names from the dom
+        let bookstoreMap  = new Map();//Create a Map to get the location of each bookstore
+        // //ADD BOOKSTORES HERE with their locations
+        bookstoreMap.set('Washington University Campus Store', "6465 Forsyth Blvd, St. Louis, MO 63105");
+        bookstoreMap.set('Subterranean Books', "6275 Delmar Blvd, St. Louis, MO 63130");
+        bookstoreMap.set('Left Bank Books', "399 N Euclid Ave, St. Louis, MO 63108");
+        bookstoreMap.set('The Wizards Wagon', "6388 Delmar Blvd, University City, MO 63130");
+        bookstoreMap.set('Fontbonne Bookstore', "6800 Wydown Blvd, St. Louis, MO 63105");
 
-  //       //Looping the bookstores and add them to the map
-  //       for (let i = 0; i < bookstores.length; i++) {
-  //         let bookstoreName = bookstores[i].innerText.toString();
-  //         let bookstoreLoc =bookstoreMap .get(bookstoreName);
-  //         addMarker(bookstoreLoc,bookstoreName);
+        geocoder = new google.maps.Geocoder();
+        //infoWindow = new google.maps.InfoWindow;
+        //Looping the bookstores and add them to the map
+        for (let i = 0; i < bookstores.length; i++) {
+          let bookstoreName = bookstores[i].innerText.toString();
+          let bookstoreLoc =bookstoreMap .get(bookstoreName);
+          console.log(bookstoreName);
+          console.log(bookstoreLoc);
+          addMarker(bookstoreLoc,bookstoreName, map);
 
-  //       }
-  //       //Function that add marks to the map
-  //       function addMarker(coords,storeName){
-  //           // let marker = new google.maps.Marker({position:coords,map:map});
-  //           // let names = storeName
-  //           // let url = "https://www.google.com/maps/search/"+storeName.replace(/ /g,'+'); //url for navigation
-  //           // let label ='<h3>'+names+'</h3><a href='+url+' target="_blank">Direction</a>'; //label for each node
-  //           // let infowindow=new google.maps.InfoWindow({content:label});
-  //           // marker.addListener('click',function(){
-  //           //         infowindow.open(map, marker)
-  //           //     }
-  //           // );
-  //         geocoder.geocode({'address': coords}, function(results, status) {
-  //         if (status === 'OK') {
-  //           resultsMap.setCenter(results[0].geometry.location);
-  //           var marker = new google.maps.Marker({
-  //             map: map,
-  //             position: results[0].geometry.location
-  //           });
-  //         } else {
-  //           alert('Geocode was not successful for the following reason: ' + status);
-  //         }
-  //         });
+        }
+      //   if (navigator.geolocation) {
+      //     navigator.geolocation.getCurrentPosition(function(position) {
+      //       var pos = {
+      //         lat: position.coords.latitude,
+      //         lng: position.coords.longitude
+      //       };
+      //       console.log(pos);
 
-  //       }
+      //       infoWindow.setPosition(pos);
+      //       infoWindow.setContent('Location found.');
+      //       infoWindow.open(map);
+      //       map.setCenter(pos);
+      //     }, function() {
+      //       handleLocationError(true, infoWindow, map.getCenter());
+      //     });
+      //   } else {
+      //     // Browser doesn't support Geolocation
+      //     handleLocationError(false, infoWindow, map.getCenter());
+      //   }
+      }
+
+      // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      //   infoWindow.setPosition(pos);
+      //   infoWindow.setContent(browserHasGeolocation ?
+      //                         'Error: The Geolocation service failed.' :
+      //                         'Error: Your browser doesn\'t support geolocation.');
+      //   infoWindow.open(map);
+      // }
+
+        //Function that add marks to the map
+        function addMarker(coords,storeName, markMap){
+            // let marker = new google.maps.Marker({position:coords,map:map});
+            // let names = storeName
+            // let url = "https://www.google.com/maps/search/"+storeName.replace(/ /g,'+'); //url for navigation
+            // let label ='<h3>'+names+'</h3><a href='+url+' target="_blank">Direction</a>'; //label for each node
+            // let infowindow=new google.maps.InfoWindow({content:label});
+            // marker.addListener('click',function(){
+            //         infowindow.open(map, marker)
+            //     }
+            // );
+          geocoder.geocode({'address': coords}, function(results, status) {
+          if (status === 'OK') {
+            console.log(results[0]);
+            console.log(markMap);
+            let marker = new google.maps.Marker({
+              map: markMap,
+              position: results[0].geometry.location
+            });
+            console.log(marker);
+            let names = storeName
+            let url = "https://www.google.com/maps/search/"+storeName.replace(/ /g,'+'); //url for navigation
+            let label ='<h3>'+names+'</h3><p>'+coords+'</p><br><a href='+url+' target="_blank">Directions</a>'; //label for each node
+            let infowindow=new google.maps.InfoWindow({content:label});
+            marker.addListener('click',function(){
+                    infowindow.open(markMap, marker)
+                }
+            );
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+          });
+
+        }
 </script>
 <!--Calling google api-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPTRY89JQZBHOgKto1ciw-ghZ8KSDclvY&callback=initMap"
