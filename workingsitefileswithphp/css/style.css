@@ -60,23 +60,48 @@ form input:first-of-type {
   width: 100%;
   background-color: #F0F0F0;
   height: 500px;
-  margin-top: 25px;
+  margin-top: 50px;
 }
 
 #header h1 {
   font-family: 'Baloo Chettan', cursive;
-  font-size: 10em;
+  font-size: 8em;
   color: #BA5536;
-  margin-left: 75px;
   position: relative;
   top: 200px;
   text-transform: uppercase;
+  text-align: left;
+}
+
+#hotBooks {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+#hotBooks h3 {
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: uppercase;
+  color: #E1B80D;
+  font-size: 3em;
+}
+
+#hotBooks div {
+  margin-top: 50px;
+}
+
+.hotOnes {
+
 }
 
 /* results page */
 .bookCover {
   height: 175px;
   width: 60px;
+  background-color: #867666;
 }
 
 .store, .storeName {
@@ -99,8 +124,8 @@ form input:first-of-type {
 .bookImg {
   height: 400px;
   width: 120px;
-/*  background-color: #867666;
-  margin-right: 20px;*/
+  background-color: #867666;
+  margin-right: 20px;
 }
 
 span {
@@ -221,20 +246,4 @@ h3 {
 
 .content p {
   margin-top: 25px;
-}
-
-.recsgroup{
-  margin-left: 35px;
-  padding: 0;
-  height: 250px;
-  width: 1440px;
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-}
-
-.recImg{
- /* background-color: transparent;
-  width:0px;
-  height:0px;*/
 }
