@@ -37,9 +37,22 @@
     <div class="col-md-3"></div>
     </div>
     <!-- header image -->
-    <div id="header">
-      <h1>Team Amazon</h1>
+    <div id="header" class="row">
+      <div class="col-md-6 col-sm-12"></div>
+      <h1 class="col-md-5 col-sm-12">Team zon</h1>
+      <div class="col-md-1 col-sm-12"></div>
     </div>
+    <div id="hotBooks">
+      <h3>You May Also Like:</h3>
+      <div class="row">
+        <div class="col-md-1 col-sm-12"></div>
+        <div class="col-md-2 hotOnes col-sm-12"><a href="#"></a></div>
+        <div class="col-md-2 hotOnes col-sm-12"><a href="#"></a></div>
+        <div class="col-md-2 hotOnes col-sm-12"><a href="#"></a></div>
+        <div class="col-md-2 hotOnes col-sm-12"><a href="#"></a></div>
+        <div class="col-md-2 hotOnes col-sm-12"><a href="#"></a></div>
+        <div class="col-md-1 col-sm-12"></div>
+      </div>
 <?php
 session_start();
 if(isset($_POST['searchType'])){
