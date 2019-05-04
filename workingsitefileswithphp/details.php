@@ -25,7 +25,7 @@
 
   function getDistance($bookstoreAddress)
   {
-    $from = "St. Louis, MO 63105"; // Assume the user is at LOPATA HALL
+    $from = "38.647867,-90.3068304"; // Assume the user is at LOPATA HALL
     $to = $bookstoreAddress;
     $from = urlencode($from);
     $to = urlencode($to);
