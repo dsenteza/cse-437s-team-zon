@@ -107,6 +107,10 @@ if($mysqli->connect_errno) {
 
    //display the important data i.e. book_name, author, bookstore etc.
     if ($asin1==$radio){
+
+    if(ucwords(strtolower(htmlspecialchars($author)))==""){
+    $author = "Unknown";
+    }
    echo '<div class="row searchResult">
      <!-- rectangles will be images -->
      <!-- <img src="'.htmlspecialchars($image_url).'" height="90px" width="60px" -->
@@ -118,7 +122,7 @@ if($mysqli->connect_errno) {
       <a href="details.php?isbn='. htmlspecialchars($asin1) .'"><h2>';
      echo htmlspecialchars($title);
      echo "</h2></a><p>";
-     echo "Author: " . htmlspecialchars($author);
+     echo "Author: " . ucwords(strtolower(htmlspecialchars($author)));
      echo "<br>";
      echo "Category: " . htmlspecialchars($category);
      echo "<br>";
@@ -245,8 +249,12 @@ if($mysqli->connect_errno) {
 
 
     $result = json_decode($result);
+    $it = 0;
 
         foreach ($result->{'result'} as $book) {
+          if ($it>5){
+            break;
+          }
         echo '<div class="row searchResult">
      <!-- rectangles will be images -->
      <!-- <img src="'.htmlspecialchars($book[2]).'" height="90px" width="60px" -->
@@ -273,6 +281,7 @@ if($mysqli->connect_errno) {
    </div>
    <div class="col-md-2"></div>
  </div>';
+ $it++;
     }
 }
      elseif(isset($_SESSION['searchTerm']) AND strcmp(htmlentities($_SESSION['searchType']),'category')===0){

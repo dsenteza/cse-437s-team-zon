@@ -193,14 +193,15 @@
       <!-- the below three divs will be book images -->';
 
     foreach ($result->{'result'} as $book) {
+	if (ucwords(strtolower(htmlspecialchars($book[2])))==""){
+	$book[2] = "Unknown";
+        }
 	echo ' <div>
                <a href="details.php?isbn='.$book[0].'">
                <img src="'.$book[3].'" width="190px" height="270px"/>
                <p class = "newclass">'.$book[1].'<br/>'.ucwords(strtolower(htmlspecialchars($book[2]))).'</p>
                </a></div>';
-		//book[1] is author
-		//book[2] is title
-		//book[3] is image
+
     }
 
 
@@ -247,46 +248,9 @@
           addMarker(bookstoreLoc,bookstoreName, map, phone);
 
         }
-      //   if (navigator.geolocation) {
-      //     navigator.geolocation.getCurrentPosition(function(position) {
-      //       var pos = {
-      //         lat: position.coords.latitude,
-      //         lng: position.coords.longitude
-      //       };
-      //       console.log(pos);
-
-      //       infoWindow.setPosition(pos);
-      //       infoWindow.setContent('Location found.');
-      //       infoWindow.open(map);
-      //       map.setCenter(pos);
-      //     }, function() {
-      //       handleLocationError(true, infoWindow, map.getCenter());
-      //     });
-      //   } else {
-      //     // Browser doesn't support Geolocation
-      //     handleLocationError(false, infoWindow, map.getCenter());
-      //   }
-      }
-
-      // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      //   infoWindow.setPosition(pos);
-      //   infoWindow.setContent(browserHasGeolocation ?
-      //                         'Error: The Geolocation service failed.' :
-      //                         'Error: Your browser doesn\'t support geolocation.');
-      //   infoWindow.open(map);
-      // }
 
         //Function that add marks to the map
         function addMarker(coords,storeName, markMap, phoneNumber){
-            // let marker = new google.maps.Marker({position:coords,map:map});
-            // let names = storeName
-            // let url = "https://www.google.com/maps/search/"+storeName.replace(/ /g,'+'); //url for navigation
-            // let label ='<h3>'+names+'</h3><a href='+url+' target="_blank">Direction</a>'; //label for each node
-            // let infowindow=new google.maps.InfoWindow({content:label});
-            // marker.addListener('click',function(){
-            //         infowindow.open(map, marker)
-            //     }
-            // );
           geocoder.geocode({'address': coords}, function(results, status) {
           if (status === 'OK') {
             console.log(results[0]);
