@@ -16,7 +16,8 @@
   <!-- navigation bar -->
   <div class="navBar row">
     <a class="col-md-2"href="index.php"><img src="img/TeamAmazonLogo.png" height="60px" width="60px" alt="Team Amazon Logo"></a>
-    <span class="col-md-4"></span>
+    <a class="col-md-2"href="results.php">Back to Search</a>
+    <span class="col-md-2"></span>
     <a class="col-md-2" href="https://github.com/dsenteza/cse-437s-team-zon" target="_blank">Github</a>
     <a class="col-md-2" href="about.html">About</a>
     <a class="col-md-2" href="doc.html">Documentation</a>
@@ -69,6 +70,9 @@
     if ($author== ""){
     $author = "Unknown";
     }
+  }
+  if (count($bookstores) == 0){
+    header("Location: index.php");
   }
 
   echo'<!-- book destails -->

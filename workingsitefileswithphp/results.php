@@ -323,8 +323,8 @@ if($mysqli->connect_errno) {
      else{
      //do nothing
      }
-$_SESSION['searchType'] = '';
-$_SESSION['searchTerm'] = '';
+// $_SESSION['searchType'] = '';
+// $_SESSION['searchTerm'] = '';
 
 ?>
 </body>
