@@ -201,7 +201,6 @@
                <img src="'.$book[3].'" width="190px" height="270px"/>
                <p class = "newclass">'.$book[1].'<br/>'.ucwords(strtolower(htmlspecialchars($book[2]))).'</p>
                </a></div>';
-
     }
 
 
@@ -249,8 +248,12 @@
 
         }
 
+      }
+
+
         //Function that add marks to the map
         function addMarker(coords,storeName, markMap, phoneNumber){
+
           geocoder.geocode({'address': coords}, function(results, status) {
           if (status === 'OK') {
             console.log(results[0]);
