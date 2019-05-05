@@ -148,7 +148,7 @@ if($mysqli->connect_errno) {
     //setup request to send json via POST
     $data = array(
         'title' => $_SESSION['searchTerm'],
-        'numOfResults' => "1"
+        'numOfResults' => "5"
     );
 
     $stuff = array(
@@ -178,33 +178,32 @@ if($mysqli->connect_errno) {
 
 
     foreach ($result->{'result'} as $book) {
-      echo $book[3];
- //        echo '<div class="row searchResult">
- //     <!-- rectangles will be images -->
- //     <!-- <img src="'.htmlspecialchars($book[2]).'" height="90px" width="60px" -->
- //     <div class="col-md-2"></div>
- //     <div class="col-md-1 bookCover">
- //     <img src="'.htmlspecialchars($book[2]).'" height="120px" width="80px"/>
- //     </div>
- //     <div class="col-md-5 bookDesc">
- //      <a href="details.php?isbn='. htmlspecialchars(str_replace('.jpg','',$book[1])) .'"><h2>';
- //     echo htmlspecialchars($book[3]);
- //     echo "</h2></a><p>";
- //     echo "Author: " . htmlspecialchars($book[4]);
- //     echo "<br>";
- //     echo "Category: " . htmlspecialchars($book[6]);
- //     echo "<br>";
- //     // echo "Bookstore: " .htmlspecialchars($bookstore);
- //     // echo '<br>';
- //     echo "ISBN: " .htmlspecialchars(str_replace('.jpg','',$book[1]));
- //     echo '</p>
- //   </div>
- //   <div class="col-md-2 distance">
- //     <p>';
- //  echo'</p>
- //   </div>
- //   <div class="col-md-2"></div>
- // </div>';
+        echo '<div class="row searchResult">
+     <!-- rectangles will be images -->
+     <!-- <img src="'.htmlspecialchars($book[2]).'" height="90px" width="60px" -->
+     <div class="col-md-2"></div>
+     <div class="col-md-1 bookCover">
+     <img src="'.htmlspecialchars($book[2]).'" height="120px" width="80px"/>
+     </div>
+     <div class="col-md-5 bookDesc">
+      <a href="details.php?isbn='. htmlspecialchars($book[0]) .'"><h2>';
+     echo htmlspecialchars($book[3]);
+     echo "</h2></a><p>";
+     echo "Author: " . htmlspecialchars($book[4]);
+     echo "<br>";
+     echo "Category: " . htmlspecialchars($book[6]);
+     echo "<br>";
+     // echo "Bookstore: " .htmlspecialchars($bookstore);
+     // echo '<br>';
+     echo "ISBN: " .htmlspecialchars(str_replace('.jpg','',$book[1]));
+     echo '</p>
+   </div>
+   <div class="col-md-2 distance">
+     <p>';
+  echo'</p>
+   </div>
+   <div class="col-md-2"></div>
+ </div>';
     }
 
 
