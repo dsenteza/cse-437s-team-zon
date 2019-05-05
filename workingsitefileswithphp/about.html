@@ -7,21 +7,68 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Bootstrap Link for Styling -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- jQuery link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!-- Javascript File -->
+    <script src="js/script.js"></script>
   </head>
   <body>
     <!-- navigation bar -->
     <div class="navBar row">
-      <a class="col-md-2"href="index.php"><img src="img/TeamAmazonLogo.png" height="60px" width="60px" alt="Team Amazon Logo"></a>
-      <span class="col-md-4"></span>
-      <a class="col-md-2" href="https://github.com/dsenteza/cse-437s-team-zon" target="_blank">Github</a>
-      <a class="col-md-2" href="about.html">About</a>
-      <a class="col-md-2" href="doc.html">Documentation</a>
+      <a class="col-md-2 col-sm-3"href="index.php"><img src="img/TeamAmazonLogo.png" height="60px" width="60px" alt="Team Amazon Logo"></a>
+      <span class="col-md-4 col-sm-0"></span>
+      <a class="col-md-2 col-sm-3" href="https://github.com/dsenteza/cse-437s-team-zon" target="_blank">Github</a>
+      <a class="col-md-2 col-sm-3" href="about.html">About</a>
+      <a class="col-md-2 col-sm-3" href="doc.html">Documentation</a>
     </div>
     <div class="content">
       <h1>About Us</h1>
       <p>Team Amazon is a semester-long project by Dominique Senteza, Zahra Lambe, Julia Dickerman, Lucas Florence, and Jin Hans, five Computer Science students at Washington University in St. Louis.
         Created for the purpose of the Software Engineering Workshop course, the team is partnering with local St. Louis bookstores to provide a one-stop book-searching platform for students, academics,
         and book-lovers alike.</p>
+        <br><br><hr/><br><br>
+        <div class="FAQ">
+          <h2>Frequently Asked Questions: </h2>
+          <div id="faqHow">
+            <h4>How to I use this site?</h4>
+          </div>
+          <div id="ansHow">
+            <ol>
+              <li>Type in your search query</li>
+              <li>Select the query type that best fits your search: </li>
+              <ul>
+                <li>Title</li>
+                <li>Keyword</li>
+                <li>ISBN</li>
+              </ul>
+              <li>Select the option you're looking for from the search results</li>
+            </ol>
+          </div>
+          <div id="faqRecs">
+              <h4>What types of recommendations does the site give me?</h4>
+          </div>
+          <div id="ansRecs">
+            <p>Our website offers you the following recommendations: </p>
+            <ul>
+              <li>Trending books <span>(on the homepage under the banner)</span></li>
+              <li>Recommended school supplies <span>(on the book details page next to the map)</span></li>
+              <li>Recommended books based off your search <span>(on the search results page with your query and on the book details page under the book information)</span></li>
+            </ul>
+          </div>
+          <div id="faqStores">
+            <h4>Which libraries and bookstores are included in the search?</h4>
+          </div>
+          <div id="ansStores">
+            <p>The following locations are included in our database: </p>
+            <ul>
+              <li>Washington University in St. Louis Campus Store</li>
+              <li>Fontbonne Bookstore</li>
+              <li>Subterrenean Bookstore</li>
+              <li>Left Bank Books</li>
+              <li>The Wizards Wagon</li>
+            </ul>
+          </div>
+        </div>
     </div>
   </body>
 </html>

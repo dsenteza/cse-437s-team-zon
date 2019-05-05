@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  <body>
-    <!-- base it off this site https://washuvis.github.io/bachelornation/proposalandprocessbook/processbook.html -->
-    <h1>Final Project Process Book<br>CSE437S</h1>
+  <body id="documentation">
+    <a href="index.php">Back to Home Page</a>
+
+    <h1>Semester Project Process Book<br>CSE437S</h1>
 
     <h2>Team Zon</h2>
     <p>Julia Dickerman, Lucas Florence, Jin Han, Zahra Lambe, Dominique Senteza</p>
@@ -16,7 +17,8 @@
 
     <h2>Overview and Motivation</h2>
     <p>As college students, we are often tasked with supplemental readings in some of our courses. However, the reading material is not always available online
-     or in our WashU bookstore. We created this website as a resource to help students narrow down options to </p>
+     or in our WashU bookstore. We created this website as a resource to help students easily determine the closest place to rent or purchase books
+     they may need for class or other purposes.</p>
 
     <h2>Related Work</h2>
     <p>We took inspiration for our project from the numerous book searching sites available for bookstores and libraries. Our website is different
@@ -30,8 +32,82 @@
       <li>Which locations is the closest to the student looking for the book?</li>
     </ul>
 
+    <br>
     <hr/>
+    <br>
 
+    <h2>Design Evolution + Implementation</h2>
+    <h3>Initial Mockups</h3>
+    <img src="img/437WebsiteLayout1.jpg" alt="Original Home Page">
+    <img src="img/437WebsiteLayout2.jpg" alt="Search Results Page">
+    <img src="img/437WebsiteLayout3.jpg" alt="Original Book Details Page">
+    <p>Our initial design for the website focused on isolating the important pages a user would need to navigate the page. We decided on: </p>
+    <ul>
+      <li>Home Page</li>
+      <ul>
+        <li>Main landing page for the site</li>
+      </ul>
+      <li>Search Results Page</li>
+      <ul>
+        <li>Populated the book results from the search query</li>
+        <li>Books can be searched by title, author, or ISBN</li>
+      </ul>
+      <li>Book Details Page</li>
+      <ul>
+        <li>Offer more information about the book and list off stores/libraries that copies of it are located at</li>
+      </ul>
+    </ul>
 
+    <h3>Refined Mockups</h3>
+    <p>As shown below here are our refined mockups based on the feedback from our MVP meeting:</p>
+    <img src="img/437WebsiteLayout4.jpg" alt="Final Home Page">
+    <img src="img/437WebsiteLayout5.jpg" alt="Final Book Details Page">
+    <p>Notice the addition of the following: </p>
+    <ul>
+      <li>Trending books section on the home page</li>
+      <li>Addition of Google maps functionality to the books page in lieu of a book description</li>
+      <ul>
+        <li>We made this switch due to the main goal of the site to be locating copies of books</li>
+      </ul>
+      <li>Addition of a recommended products section as per our client's request</li>
+    </ul>
+
+    <h3>MVP</h3>
+    <img src="img/outline.png" alt="MVP Accomplishments">
+    <img src="img/roles.png" alt="Roles of Group Members">
+    <img src="img/goals.png" alt="Goals for Final Product">
+    <p>As detailed in one of the images above, our minimum viable product consisted of building out the home, search results,
+    and book details pages as per our original mockups. We hosted the site on an AWS instance and made placeholder search
+    code since we had no integrated with our complementary group yet. Work was split up as such:</p>
+    <ul>
+      <li><span>Dominique: </span>UI Design/Development</li>
+      <li><span>Lucas: </span>EC2 Database and Search functionality</li>
+      <li><span>Zahra: </span>Front-End and Search Inegration</li>
+      <li><span>Julia: </span>Details Page and Database Integration</li>
+      <li><span>Jin: </span>Location Functionality</li>
+    </ul>
+    <br>
+    <p>Our goals following the comletion of the MVP was to:</p>
+    <ol>
+      <li>Merge our database and code with the search algorithm group</li>
+      <li>Streamline our location functionality and add a map to the details page</li>
+      <li>Finalize the UI design</li>
+    </ol>
+
+    <h3>Final Product</h3>
+    <p>The work breakdown for the final product was as follows: </p>
+    <ul>
+      <li><span>Dominique: </span>UI Design/Development</li>
+      <li><span>Lucas: </span>Site integration with searcha algorithm group</li>
+      <li><span>Zahra: </span>Documentation</li>
+      <li><span>Julia: </span>Map Inegration with the UI</li>
+      <li><span>Jin: </span>Location Functionality using GoogleMaps API</li>
+    </ul>
+
+    <h2>Further Development</h2>
+    <p>This project could be further developed to include price comparisons for each of the locations that carry a book. We couldn't
+      get access to this information because of the scope of the project, however, price could be another factor in addition to location
+      that could sway a consumer's decision to purchase or not from a certain vendor.
+    </p>
   </body>
 </html>

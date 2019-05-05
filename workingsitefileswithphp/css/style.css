@@ -247,3 +247,52 @@ h3 {
 .content p {
   margin-top: 25px;
 }
+
+/*Documentation page*/
+#documentation a {
+  font-size: 1.5em;
+  margin-bottom: 25px;
+}
+
+#documentation {
+  margin-top: 75px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 75px;
+}
+
+#documentation img {
+  height: 259px;
+  width: 480px;
+  margin-right: 20px;
+  margin-bottom: 30px;
+}
+
+#documentation span {
+  font-style: italic;
+  font-weight: bold;
+}
+
+/*FAQ Page*/
+.FAQ {
+  text-align: left;
+}
+
+.FAQ h2 {
+  font-size: 2em;
+  margin-bottom: 50px;
+}
+
+.FAQ h4 {
+  font-size: 1.5em;
+  margin-top: 50px;
+}
+
+.FAQ p{
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.FAQ li {
+  font-size: 1em;
+}
