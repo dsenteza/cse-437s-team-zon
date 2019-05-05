@@ -16,6 +16,7 @@
 session_start();
 //echo $_SESSION['searchType'];
 //echo $_SESSION['searchTerm'];
+//echo $_SESSION['results'];
 ?>
     <!-- navigation bar -->
     <div class="navBar row">
