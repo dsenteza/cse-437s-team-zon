@@ -57,11 +57,11 @@
   $i=0;
   $mysqli = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
 
-  $stmt = $mysqli->prepare("select asin,title,author,category,image_url,bookstoredatabase.name from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where asin = '$_GET[isbn]'");
+  $stmt = $mysqli->prepare("select asin,title,author,category,image_url,phonenumber,bookstoredatabase.name from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where asin = '$_GET[isbn]'");
 
   $stmt->execute();
 
-  $stmt->bind_result($asin1,$title,$author,$category,$image_url,$bookstore);
+  $stmt->bind_result($asin1,$title,$author,$category,$image_url,$phoneNumber,$bookstore);
 
   while ($stmt->fetch()){
     $bookstores[$i] = $bookstore;
@@ -77,8 +77,8 @@
   <!-- book description -->
   <div class="col-md-2">
   <div class="authorInfo">
-  <h1>'.htmlspecialchars($title).'</h1>
-  <h4><span>Author: </span>'.htmlspecialchars($author).'</h4>
+  <h1 class="book-title">'.htmlspecialchars($title).'</h1>
+  <h4><span>Author: '.ucwords(strtolower(htmlspecialchars($author))).'</span></h4>
   <p>'.htmlspecialchars($category).'</p>
   </div>
   <!-- list of bookstores nearby -->
@@ -89,6 +89,7 @@
     <address>
     '.getBookstoreAddress($store).'
     </address>
+    <p>'.$phoneNumber.'</p>
     <p class="distance">'.getDistance(getBookstoreAddress($store)).' miles away</p>
     </div>';
   }
@@ -222,6 +223,7 @@
         map = new google.maps.Map(document.getElementById('map'), option);
         let bookstores = document.getElementsByClassName("storeName");//get the bookstore names from the dom
         let bookstoreMap  = new Map();//Create a Map to get the location of each bookstore
+        let phoneNumberMap = new Map();
         // //ADD BOOKSTORES HERE with their locations
         bookstoreMap.set('Washington University Campus Store', "6465 Forsyth Blvd, St. Louis, MO 63105");
         bookstoreMap.set('Subterranean Books', "6275 Delmar Blvd, St. Louis, MO 63130");
@@ -229,15 +231,22 @@
         bookstoreMap.set('The Wizards Wagon', "6388 Delmar Blvd, University City, MO 63130");
         bookstoreMap.set('Fontbonne Bookstore', "6800 Wydown Blvd, St. Louis, MO 63105");
 
+        phoneNumberMap.set('Washington University Campus Store', "(314) 935-5500");
+        phoneNumberMap.set('Subterranean Books', "(314) 862-6100");
+        phoneNumberMap.set('Left Bank Books', "(314) 367-6731");
+        phoneNumberMap.set('The Wizards Wagon', "(314) 862-4263");
+        phoneNumberMap.set('Fontbonne Bookstore', "(314) 889-1420");
+
         geocoder = new google.maps.Geocoder();
         //infoWindow = new google.maps.InfoWindow;
         //Looping the bookstores and add them to the map
         for (let i = 0; i < bookstores.length; i++) {
           let bookstoreName = bookstores[i].innerText.toString();
           let bookstoreLoc =bookstoreMap .get(bookstoreName);
+          let phone = phoneNumberMap.get(bookstoreName);
           console.log(bookstoreName);
           console.log(bookstoreLoc);
-          addMarker(bookstoreLoc,bookstoreName, map);
+          addMarker(bookstoreLoc,bookstoreName, map, phone);
 
         }
       //   if (navigator.geolocation) {
@@ -270,7 +279,7 @@
       // }
 
         //Function that add marks to the map
-        function addMarker(coords,storeName, markMap){
+        function addMarker(coords,storeName, markMap, phoneNumber){
             // let marker = new google.maps.Marker({position:coords,map:map});
             // let names = storeName
             // let url = "https://www.google.com/maps/search/"+storeName.replace(/ /g,'+'); //url for navigation
@@ -291,7 +300,7 @@
             console.log(marker);
             let names = storeName
             let url = "https://www.google.com/maps/search/"+storeName.replace(/ /g,'+'); //url for navigation
-            let label ='<h3>'+names+'</h3><p>'+coords+'</p><br><a href='+url+' target="_blank">Directions</a>'; //label for each node
+            let label ='<h3>'+names+'</h3><p class="window">'+coords+'<br>'+phoneNumber+'</p><br><a href='+url+' target="_blank">Directions</a>'; //label for each node
             let infowindow=new google.maps.InfoWindow({content:label});
             marker.addListener('click',function(){
                     infowindow.open(markMap, marker)

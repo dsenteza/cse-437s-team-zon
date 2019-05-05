@@ -29,7 +29,7 @@
         <input type="text" name="searchTerm" placeholder="Search By Title, Keyword, or ISBN">
         <input type="submit" name="search" value="Search">
         <div class="radio">
-          <input type="radio" name="searchType" value="title"> Title
+          <input type="radio" name="searchType" checked="true" value="title"> Title
           <input type="radio" name="searchType" value="author"> Author
           <input type="radio" name="searchType" value="isbn"> ISBN
         </div>
