@@ -66,6 +66,9 @@
   while ($stmt->fetch()){
     $bookstores[$i] = $bookstore;
     ++$i;
+    if ($author== ""){
+    $author = "Unknown";
+    }
   }
 
   echo'<!-- book destails -->
@@ -152,17 +155,14 @@
     $ch = curl_init($url);
 
     //setup request to send json via POST
-    //echo $asin1;
     $data = array(
-        'author' => $author,
+        'acin' => $asin1,
         'numOfResults' => 3
     );
 
-    $query = array('recommendation','1507653395',3);
-
     $stuff = array(
-        "params" => $query,
-        "method" => "Cambridge.getBookFromAsin",
+        "params" => $data,
+        "method" => "Cambridge.getBookRecommendations",
         "id" => "1"
     );
 
@@ -183,30 +183,28 @@
     //close cURL resource
     curl_close($ch);
 
-/*   $result = json_decode($result);
-
-    foreach ($result->{'result'} as $book) {
-		echo $book[0];
-		echo $book[1];
-                echo $book[2];
-		echo $book[3];
-		//book[1] is author
-		//book[2] is title
-		//book[3] is image
-    }*/
-
-
-  ?>
-  <!-- recommendations -->
+   $result = json_decode($result);
+    echo '  <!-- recommendations -->
   <hr>
 
   <div class="row">
   <h3 id="youmayalsolike">You May Also Like</h3>
     <div class="recsgroup">
-      <!-- the below three divs will be book images -->
-      <div class="recs"></div>
-      <div class="recs"></div>
-      <div class="recs"></div>
+      <!-- the below three divs will be book images -->';
+
+    foreach ($result->{'result'} as $book) {
+	echo ' <div>
+               <a href="details.php?isbn='.$book[0].'">
+               <img src="'.$book[3].'" width="190px" height="270px"/>
+               <p class = "newclass">'.$book[1].'<br/>'.ucwords(strtolower(htmlspecialchars($book[2]))).'</p>
+               </a></div>';
+		//book[1] is author
+		//book[2] is title
+		//book[3] is image
+    }
+
+
+  ?>
     </div>
   </div>
   <script>
