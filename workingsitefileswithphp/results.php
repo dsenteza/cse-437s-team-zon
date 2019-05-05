@@ -138,40 +138,76 @@ if($mysqli->connect_errno) {
 
         }
         elseif(isset($_SESSION['searchTerm']) AND strcmp(htmlentities($_SESSION['searchType']),'title')===0){
-        //select all of the relevant data to display to the user
-        $stmt = $mysqli->prepare("select asin,title,author,category,bookstoredatabase.name as name, image_url from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where LOWER(title) like LOWER('$radio') limit 5");
+    //search for titles provided by cambridge analytica    
+    //API URL
+    $url = 'http://does.fyi:3456/rpc';
 
-        $stmt->execute();
+    //create a new cURL resource
+    $ch = curl_init($url);
 
-        $result = $stmt->get_result();
-	while ($row = $result->fetch_assoc()){
-   echo '<div class="row searchResult">
-     <!-- rectangles will be images -->
-     <!-- <img src="'.htmlspecialchars($row['image_url']).'" height="90px" width="60px" -->
-     <div class="col-md-2"></div>
-     <div class="col-md-1 bookCover">
-     <img src="'.htmlspecialchars($row["image_url"]).'" height="120px" width="80px"/>
-     </div>
-     <div class="col-md-5 bookDesc">
-      <a href="details.php?isbn='. htmlspecialchars($row["asin"]) .'"><h2>';
-     echo htmlspecialchars($row["title"]);
-     echo "</h2></a><p>";
-     echo "Author: " . htmlspecialchars($row["author"]);
-     echo "<br>";
-     echo "Category: " . htmlspecialchars($row["category"]);
-     echo "<br>";
-     // echo "Bookstore: " .htmlspecialchars($row["name"]);
-     //  echo '<br>';
-     echo "ISBN: " .htmlspecialchars($row["asin"]);
-	echo '</p>
-   </div>
-   <div class="col-md-2 distance">
-     <p>';
-        echo'</p>
-   </div>
-   <div class="col-md-2"></div>
- </div>';
- }
+    //setup request to send json via POST
+    $data = array(
+        'title' => $_SESSION['searchTerm'],
+        'numOfResults' => "1"
+    );
+
+    $stuff = array(
+        "params" => $data,
+        "method" => "Cambridge.searchTitles",
+        "id" => "1"
+    );
+
+    $payload = json_encode($stuff);
+
+    //attach encoded JSON string to the POST fields
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+
+    //set the content type to application/json
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+
+    //return response instead of outputting
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    //execute the POST request
+    $result = curl_exec($ch);
+
+    //close cURL resource
+    curl_close($ch);
+
+    $result = json_decode($result);
+
+
+    foreach ($result->{'result'} as $book) {
+      echo $book[3];
+ //        echo '<div class="row searchResult">
+ //     <!-- rectangles will be images -->
+ //     <!-- <img src="'.htmlspecialchars($book[2]).'" height="90px" width="60px" -->
+ //     <div class="col-md-2"></div>
+ //     <div class="col-md-1 bookCover">
+ //     <img src="'.htmlspecialchars($book[2]).'" height="120px" width="80px"/>
+ //     </div>
+ //     <div class="col-md-5 bookDesc">
+ //      <a href="details.php?isbn='. htmlspecialchars(str_replace('.jpg','',$book[1])) .'"><h2>';
+ //     echo htmlspecialchars($book[3]);
+ //     echo "</h2></a><p>";
+ //     echo "Author: " . htmlspecialchars($book[4]);
+ //     echo "<br>";
+ //     echo "Category: " . htmlspecialchars($book[6]);
+ //     echo "<br>";
+ //     // echo "Bookstore: " .htmlspecialchars($bookstore);
+ //     // echo '<br>';
+ //     echo "ISBN: " .htmlspecialchars(str_replace('.jpg','',$book[1]));
+ //     echo '</p>
+ //   </div>
+ //   <div class="col-md-2 distance">
+ //     <p>';
+ //  echo'</p>
+ //   </div>
+ //   <div class="col-md-2"></div>
+ // </div>';
+    }
+
+
 }
      elseif(isset($_SESSION['searchTerm']) AND strcmp(htmlentities($_SESSION['searchType']),'author')===0){
  //select all of the relevant data to display to the user
