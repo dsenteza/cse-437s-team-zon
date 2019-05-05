@@ -37,23 +37,25 @@
     <div class="col-md-3"></div>
     </div>
     <!-- header image -->
-    <div id="header" class="row">
+    <!--<div id="header" class="row">
       <div class="col-md-6 col-sm-12"></div>
-      <h1 class="col-sm-11">Team zon</h1>
+      <h1 class="col-md-5 col-sm-12">Team zon</h1>
       <div class="col-md-1 col-sm-12"></div>
-    </div>
+    </div>-->
     <div id="hotBooks">
-	<br/>
-      <h3>Trending Topics:</h3>
-      <div class="recsgroup1">
+    <br/>
+    <h3>Trending Books:</h3>
+      <br/>
+	<div class="recsgroup1">
 	<?php
   $suggestions = [];
   $imageurl = [];
   $author = [];
   $i1=0;
+  $asin = [];
   $mysqli1 = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
 
-  $stmt1 = $mysqli1->prepare("SELECT author,title,image_url FROM booksdatabase4 ORDER BY RAND()
+  $stmt1 = $mysqli1->prepare("SELECT asin,author,title,image_url FROM booksdatabase4 ORDER BY RAND()
 LIMIT 5");
 
   $stmt1->execute();
@@ -65,26 +67,23 @@ LIMIT 5");
     $suggestions[$i1] = htmlspecialchars($row["title"]);
     $imageurl[$i1] = htmlspecialchars($row["image_url"]);
     $author[$i1] = htmlspecialchars($row["author"]);
+    $asin[$i1] = htmlspecialchars($row["asin"]);
     ++$i1;
   }
-
 echo' 
-      <div><img src="'.$imageurl[0].'" width="190px" height="270px"/>
-      <a href="#"><p class = "newclass">'.$suggestions[0].'<br/>'.$author[0].'</p></a></div>
-      <div class = ""><img src="'.$imageurl[1].'" width="190px" height="270px"/>
-      <a href="#" width="190px"><p class = "newclass">'.$suggestions[1].'<br/>'.$author[1].'</p></a></div>
-      <div class = ""><img src="'.$imageurl[2].'" width="190px" height="270px"/>
-      <a href="#" width="190px"><p class = "newclass">'.$suggestions[2].'<br/>'.$author[2].'</p></a></div>
-      <div class = ""><img src="'.$imageurl[3].'" width="190px" height="270px"/>
-      <a href="#" width="190px"><p class = "newclass">'.$suggestions[3].'<br/>'.$author[3].'</p></a></div>
-      <div class = ""><img src="'.$imageurl[4].'" width="190px" height="270px"/>
-      <a href="#" width="190px"><p class = "newclass">'.$suggestions[4].'<br/>'.$author[4].'</p></a></div>
+      <div><a href="details.php?isbn='.$asin[0].'"><img src="'.$imageurl[0].'" width="190px" height="270px"/>
+      <p class = "newclass">'.$suggestions[0].'<br/>'.$author[0].'</p></a></div>
+      <div class = ""><a href="details.php?isbn='.$asin[1].'"><img src="'.$imageurl[1].'" width="190px" height="270px"/>
+      <p class = "newclass">'.$suggestions[1].'<br/>'.$author[1].'</p></a></div>
+      <div class = ""><a href="details.php?isbn='.$asin[2].'"><img src="'.$imageurl[2].'" width="190px" height="270px"/>
+      <p class = "newclass">'.$suggestions[2].'<br/>'.$author[2].'</p></a></div>
+      <div class = ""><a href="details.php?isbn='.$asin[3].'"><img src="'.$imageurl[3].'" width="190px" height="270px"/>
+      <p class = "newclass">'.$suggestions[3].'<br/>'.$author[3].'</p></a></div>
+      <div class = ""><a href="details.php?isbn='.$asin[4].'"><img src="'.$imageurl[4].'" width="190px" height="270px"/>
+      <p class = "newclass">'.$suggestions[4].'<br/>'.$author[4].'</p></a></div>
 ';
-
 	?>
       </div>
-
-<br/><br/>
 <?php
 session_start();
 if(isset($_POST['searchType'])){

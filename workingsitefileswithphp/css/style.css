@@ -76,21 +76,20 @@ form input:first-of-type {
 #hotBooks {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px;
+  /*margin-top: 100px;*/
   width: 100%;
-  margin-bottom: 100px;
+  /*margin-bottom: 100px;*/
 }
 
 #hotBooks h3 {
   margin-left: auto;
   margin-right: auto;
-  text-transform: uppercase;
-  color: #E1B80D;
+  /*text-transform: uppercase;*/
   font-size: 3em;
 }
 
 #hotBooks div {
-  margin-top: 50px;
+  /*margin-top: 50px;*/
 }
 
 .hotOnes {
@@ -101,7 +100,7 @@ form input:first-of-type {
 .bookCover {
   height: 175px;
   width: 60px;
-  background-color: #867666;
+  /*background-color: #867666;*/
 }
 
 .store, .storeName {
@@ -124,7 +123,7 @@ form input:first-of-type {
 .bookImg {
   height: 400px;
   width: 120px;
-  background-color: #867666;
+  background-color: transparent;/*#867666;*/
   margin-right: 20px;
 }
 
@@ -165,8 +164,7 @@ span {
 .map {
   height: 100%;
   width: 100%;
-  margin-left: 15px;
-  padding: 25px;
+  padding: 50px;
   background-color: #D5C3AA ;
 }
 
@@ -214,10 +212,10 @@ hr {
 }
 
 h3 {
-    margin-right: auto;
-    margin-left: auto;
+  /*  margin-right: auto;
+    margin-left: auto;*/
     text-align: center;
-    padding-bottom: 30px;
+    /*padding-bottom: 30px;*/
 }
 
 .details {
@@ -225,10 +223,9 @@ h3 {
 }
 
 .recs {
-  height: 160px;
-  width: 60px;
+  width: 190px;
+  height: 270px;
   background-color: #662316;
-  margin-right: 20px;
 }
 
 /* about us page */
@@ -296,3 +293,35 @@ h3 {
 .FAQ li {
   font-size: 1em;
 }
+.recsgroup{
+  margin-left:35px;
+  padding: 0;
+  height: 250px;
+  width: 1440px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  }
+
+.recsgroup1{
+  padding: 0;
+  height: 250px;
+  width: 1440px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  }
+
+.newclass
+{
+  width: 190px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#youmayalsolike{
+margin-left: auto;
+margin-right: auto;
+text-align:center;
+}  

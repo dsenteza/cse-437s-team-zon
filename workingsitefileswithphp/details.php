@@ -151,7 +151,7 @@
     $ch = curl_init($url);
 
     //setup request to send json via POST
-    echo $asin1;
+    //echo $asin1;
     $data = array(
         'author' => $author,
         'numOfResults' => 3
@@ -200,12 +200,12 @@
   <hr>
 
   <div class="row">
-    <h3>You May Also Like</h3>
+  <h3 id="youmayalsolike">You May Also Like</h3>
     <div class="recsgroup">
       <!-- the below three divs will be book images -->
-      <div class="col-md-2 recs"></div>
-      <div class="col-md-2 recs"></div>
-      <div class="col-md-2 recs"></div>
+      <div class="recs"></div>
+      <div class="recs"></div>
+      <div class="recs"></div>
     </div>
   </div>
   <script>
