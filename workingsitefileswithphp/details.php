@@ -143,6 +143,58 @@
   <a href="#">'.$suggestions[$item4].'</a>
   </div>
   </div>';
+   
+      //API URL
+    $url = 'http://does.fyi:3456/rpc';
+
+    //create a new cURL resource
+    $ch = curl_init($url);
+
+    //setup request to send json via POST
+    echo $asin1;
+    $data = array(
+        'author' => $author,
+        'numOfResults' => 3
+    );
+
+    $query = array('recommendation','1507653395',3);
+
+    $stuff = array(
+        "params" => $query,
+        "method" => "Cambridge.getBookFromAsin",
+        "id" => "1"
+    );
+
+    $payload = json_encode($stuff);
+
+    //attach encoded JSON string to the POST fields
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+
+    //set the content type to application/json
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+
+    //return response instead of outputting
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    //execute the POST request
+    $result = curl_exec($ch);
+
+    //close cURL resource
+    curl_close($ch);
+
+/*   $result = json_decode($result);
+
+    foreach ($result->{'result'} as $book) {
+		echo $book[0];
+		echo $book[1];
+                echo $book[2];
+		echo $book[3];
+		//book[1] is author
+		//book[2] is title
+		//book[3] is image
+    }*/
+
+
   ?>
   <!-- recommendations -->
   <hr>

@@ -39,25 +39,89 @@
     <!-- header image -->
     <div id="header" class="row">
       <div class="col-md-6 col-sm-12"></div>
-      <h1 class="col-md-5 col-sm-12">Team zon</h1>
+      <h1 class="col-sm-11">Team zon</h1>
       <div class="col-md-1 col-sm-12"></div>
     </div>
     <div id="hotBooks">
-      <h3>You May Also Like:</h3>
-      <div class="row">
-        <div class="col-md-1 col-sm-12"></div>
-        <div class="col-md-2 hotOnes col-sm-12"><a href="#"></a></div>
-        <div class="col-md-2 hotOnes col-sm-12"><a href="#"></a></div>
-        <div class="col-md-2 hotOnes col-sm-12"><a href="#"></a></div>
-        <div class="col-md-2 hotOnes col-sm-12"><a href="#"></a></div>
-        <div class="col-md-2 hotOnes col-sm-12"><a href="#"></a></div>
-        <div class="col-md-1 col-sm-12"></div>
+	<br/>
+      <h3>Trending Topics:</h3>
+      <div class="recsgroup1">
+	<?php
+  $suggestions = [];
+  $imageurl = [];
+  $author = [];
+  $i1=0;
+  $mysqli1 = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
+
+  $stmt1 = $mysqli1->prepare("SELECT author,title,image_url FROM booksdatabase4 ORDER BY RAND()
+LIMIT 5");
+
+  $stmt1->execute();
+
+  //$stmt1->bind_result($name,$long_name, $num,$manufacturer,$fit,$brand,$vendor,$price,$image_url);
+  $result = $stmt1->get_result();
+  while ($row = $result->fetch_assoc()){
+  //while ($stmt1->fetch()){
+    $suggestions[$i1] = htmlspecialchars($row["title"]);
+    $imageurl[$i1] = htmlspecialchars($row["image_url"]);
+    $author[$i1] = htmlspecialchars($row["author"]);
+    ++$i1;
+  }
+
+echo' 
+      <div><img src="'.$imageurl[0].'" width="190px" height="270px"/>
+      <a href="#"><p class = "newclass">'.$suggestions[0].'<br/>'.$author[0].'</p></a></div>
+      <div class = ""><img src="'.$imageurl[1].'" width="190px" height="270px"/>
+      <a href="#" width="190px"><p class = "newclass">'.$suggestions[1].'<br/>'.$author[1].'</p></a></div>
+      <div class = ""><img src="'.$imageurl[2].'" width="190px" height="270px"/>
+      <a href="#" width="190px"><p class = "newclass">'.$suggestions[2].'<br/>'.$author[2].'</p></a></div>
+      <div class = ""><img src="'.$imageurl[3].'" width="190px" height="270px"/>
+      <a href="#" width="190px"><p class = "newclass">'.$suggestions[3].'<br/>'.$author[3].'</p></a></div>
+      <div class = ""><img src="'.$imageurl[4].'" width="190px" height="270px"/>
+      <a href="#" width="190px"><p class = "newclass">'.$suggestions[4].'<br/>'.$author[4].'</p></a></div>
+';
+
+	?>
       </div>
+
+<br/><br/>
 <?php
 session_start();
 if(isset($_POST['searchType'])){
  $_SESSION['searchType'] =  $_POST['searchType'];
  $_SESSION['searchTerm'] = $_POST['searchTerm'];
+
+/*$mysqli = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
+
+$stmt1 = $mysqli->prepare("select * from json");
+
+  $stmt1->execute();
+
+  $stmt1->bind_result($thing);
+
+$_SESSION['results'] = 1;
+ 
+echo "<script>
+alert('hello');
+var options = {
+  shouldSort: true,
+  tokenize: true,
+  threshold: 0.6,
+  location: 0,
+  distance: 100,
+  maxPatternLength: 32,
+  minMatchCharLength: 1,
+  keys: [
+    'asin',
+    'title',
+    'author'
+  ]
+};
+var books = ".htmlspecialchars($thing).";
+var fuse = new Fuse(books,options);
+var result = fuse.search(".$_SESSION['searchTerm'].");
+".$_SESSION['results']." = result;
+</script>";*/
 header("Location: results.php");
 }
 ?>
