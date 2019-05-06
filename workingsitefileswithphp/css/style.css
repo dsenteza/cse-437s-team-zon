@@ -117,49 +117,24 @@ form input:first-of-type {
 }
 
 /* book detail page */
-@media only screen and (min-width: 992px) {
-  #bookAuth {
-    font-size: 2vw;
-  }
-
-  #bookAuth h1 {
-    font-size: 1.5em;
-  }
-
-  #bookAuth h4 {
-    font-size: 1.1em;
-  }
-
-  #bookAuth p {
-    font-size: 0.8em;
-  }
+.button {
+  position: absolute;
+  left: 25px;
+  color: #662316;
 }
 
-@media only screen and (min-width: 768px) {
-  #bookAuth {
-    font-size: 2vw;
-  }
-
-  #bookAuth h1 {
-    font-size: 1.5em;
-  }
-
-  #bookAuth h4 {
-    font-size: 1.1em;
-  }
-
-  #bookAuth p {
-    font-size: 0.8em;
-  }
+.button:hover {
+  color: #E1B80D;
 }
 
 @media only screen and (min-width: 600px) {
   #bookAuth {
-    font-size: 2vw;
+    font-size: 1.2vw;
   }
 
   #bookAuth h1 {
     font-size: 1.5em;
+    overflow: ellipsis;
   }
 
   #bookAuth h4 {
@@ -169,47 +144,69 @@ form input:first-of-type {
   #bookAuth p {
     font-size: 0.8em;
   }
+
+  .bookImg {
+    width: 45%;
+
+  }
+  #bookie {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #bookAuth {
+    font-size: 2vw;
+  }
+
+  #bookAuth h1 {
+    font-size: 1.5em;
+    overflow: ellipsis;
+  }
+
+  #bookAuth h4 {
+    font-size: 1.1em;
+  }
+
+  #bookAuth p {
+    font-size: 0.8em;
+  }
+
+  .bookImg {
+    width: 100%;
+
+  }
+  #bookie {
+    width: 45%;
+  }
+}
+
+.bookImg {
+  float: left;
+}
+
+#bookie {
+  float: right;
+  margin-left: 10px;
+  position: relative;
+  left: 10px;
+}
+
+address {
+  overflow: hidden;
 }
 
 .bookstores {
-  padding-top: 0px;
-  overflow: scroll;;
-}
-/*.details {
-  margin-left: auto;
-  margin-right: auto;
-}
-.bookImg {
-  height: 400px;
-  width: 120px;
-  margin-right: 20px;
-}
-
-span {
-  font-size: 20px;
-}
-
-.authorInfo {
-  
-}
-
-.authorInfo h2 {
-  font-size: 18px;
+  overflow: scroll;
 }
 
 .storeName {
   color: #BA5536;
 }
 
-.book-title{
-  font-size:25px;
-}*/
-
 .mapSec {
   border-right-style: solid;
   border-right-color: #E1B80D;
-  padding-right: 60px;
-  padding-bottom: 40px;
 }
 
 .mapSec p {
@@ -218,9 +215,10 @@ span {
 }
 
 .map {
-  height: 350px;
   width: 100%;
-  padding: 50px;
+  height: 100%;
+  /*margin-left: 15px;*/
+  padding: 25px;
   background-color: #D5C3AA ;
 }
 
@@ -244,10 +242,6 @@ span {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-}
-
-.recDiv {
-  
 }
 
 .rec div {
@@ -276,10 +270,7 @@ hr {
 }
 
 h3 {
-  /*  margin-right: auto;
-    margin-left: auto;*/
-    text-align: center;
-    /*padding-bottom: 30px;*/
+  text-align: center;
 }
 
 .details {
