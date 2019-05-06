@@ -3,7 +3,7 @@ All notable changes to our site will be documented in this file.
 
 Changes are grouped by version.
 
-## 1.0.0 - 5/5/2019
+## 2.0.0 - 5/5/2019
 ### Added
 - Added fuzzy search and suggested book recommendations from Cambridge Team's RPC.
 - Added supplementary items like pens, pencils and notebooks based on client's recommendations.
@@ -22,7 +22,7 @@ Changes are grouped by version.
 - Removed previous exact search from MVP.
 - Removed old map code because initially hardcoded elements.
 
-## 0.1.0 - 3/6/2019
+## 1.0.0 - 3/6/2019
 ### Added
 - Added initial website framework containing initial search, results display page and details page for each book.
 - The search queries the MYSQL database for exact author, title, and ASIN.
@@ -36,3 +36,4 @@ Changes are grouped by version.
 
 ### Removed
 - Removed dark blank stock images and stock text.
+- Removed auto-fill on search due to database wait times.
