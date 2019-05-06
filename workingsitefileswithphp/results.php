@@ -40,6 +40,11 @@ session_start();
       </form>
      </div>
 <?php
+if(isset($_POST['searchType'])){
+ $_SESSION['searchType'] =  $_POST['searchType'];
+ $_SESSION['searchTerm'] = $_POST['searchTerm'];
+ header("Location: results.php");
+}
 //Function that returns the distance based on bookstore address
 function getDistance($bookstoreAddress)
 {
@@ -96,7 +101,7 @@ if($mysqli->connect_errno) {
   printf("Connection Failed: %s\n", $mysqli->connect_error);
   exit;
 }
-        if(isset($_SESSION['searchTerm']) AND strcmp(htmlentities($_SESSION['searchType']),'isbn')===0){
+        if(isset($_SESSION['searchTerm']) AND strcmp(htmlentities($_SESSION['searchType']),'isbn')===0 AND $_SESSION['searchTerm'] != ''){
     $stmt = $mysqli->prepare("select asin,title,author,category,bookstoredatabase.name, image_url from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where asin = '$radio'");
 
     $stmt->execute();
@@ -116,7 +121,7 @@ if($mysqli->connect_errno) {
      <!-- <img src="'.htmlspecialchars($image_url).'" height="90px" width="60px" -->
      <div class="col-md-2"></div>
      <div class="col-md-1 bookCover">
-     <img src="'.htmlspecialchars($row["image_url"]).'" height="120px" width="80px"/>
+     <img src="'.htmlspecialchars($image_url).'" height="120px" width="80px"/>
      </div>
      <div class="col-md-5 bookDesc">
       <a href="details.php?isbn='. htmlspecialchars($asin1) .'"><h2>';
@@ -325,7 +330,6 @@ if($mysqli->connect_errno) {
      }
 // $_SESSION['searchType'] = '';
 // $_SESSION['searchTerm'] = '';
-
 ?>
 </body>
 </html>
