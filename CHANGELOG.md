@@ -1,5 +1,6 @@
 # Changelog
 All notable changes to our site will be documented in this file.
+
 Changes are grouped by version.
 
 ## 0.5.0 - 4/10/2019
