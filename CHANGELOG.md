@@ -5,21 +5,22 @@ Changes are grouped by version.
 
 ## 1.0.0 - 5/5/2019
 ### Added
-- Added code for interaction with Cambridge Team's RPC
-- Added supplementary items like pens, pencils and notebooks based on client's recommendations
-- Added currently tredning books based on client's recommendations
-- Added back button to allow for easier maneuvering between pages
-- Added Github Link
-- Added FAQ section in About Page
-- Added Documentation Page
+- Added code for interaction with Cambridge Team's RPC.
+- Added supplementary items like pens, pencils and notebooks based on client's recommendations.
+- Added currently trending books based on client's recommendations.
+- Added back button to allow for easier maneuvering between pages.
+- Added Github Link.
+- Added FAQ section in About Page.
+- Added Documentation Page.
 
 ### Changed
-- Updated CSS to be browser responsive
-- Updated display to handle the supplementary items and to handle different map layout
-- Changed the map to be responsive as well as allow pop-ups and different views
+- Updated CSS to be browser width responsive.
+- Updated display to handle the supplementary items and to handle different map layouts.
+- Changed the map to be responsive as well as allow pop-ups and different views.
 
 ### Removed
-- Remove previous exact search from MVP
+- Removed previous exact search from MVP.
+- Removed old map code because its lack of flexibility and inability to cope with user location.
 
 ## 0.5.0 - 4/10/2019
 ### Added
