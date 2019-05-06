@@ -59,16 +59,17 @@ form input:first-of-type {
 #header {
   width: 100%;
   background-color: #F0F0F0;
-  height: 500px;
+  height: 250px;
   margin-top: 50px;
 }
 
 #header h1 {
   font-family: 'Baloo Chettan', cursive;
-  font-size: 8em;
+  font-size: 7em;
   color: #BA5536;
-  position: relative;
-  top: 200px;
+  position: absolute;
+  bottom: 300px;
+  right: 50px;
   text-transform: uppercase;
   text-align: left;
 }
@@ -116,14 +117,71 @@ form input:first-of-type {
 }
 
 /* book detail page */
-.details {
+@media only screen and (min-width: 992px) {
+  #bookAuth {
+    font-size: 2vw;
+  }
+
+  #bookAuth h1 {
+    font-size: 1.5em;
+  }
+
+  #bookAuth h4 {
+    font-size: 1.1em;
+  }
+
+  #bookAuth p {
+    font-size: 0.8em;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #bookAuth {
+    font-size: 2vw;
+  }
+
+  #bookAuth h1 {
+    font-size: 1.5em;
+  }
+
+  #bookAuth h4 {
+    font-size: 1.1em;
+  }
+
+  #bookAuth p {
+    font-size: 0.8em;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #bookAuth {
+    font-size: 2vw;
+  }
+
+  #bookAuth h1 {
+    font-size: 1.5em;
+  }
+
+  #bookAuth h4 {
+    font-size: 1.1em;
+  }
+
+  #bookAuth p {
+    font-size: 0.8em;
+  }
+}
+
+.bookstores {
+  padding-top: 0px;
+  overflow: scroll;;
+}
+/*.details {
   margin-left: auto;
   margin-right: auto;
 }
 .bookImg {
   height: 400px;
   width: 120px;
-  background-color: transparent;/*#867666;*/
   margin-right: 20px;
 }
 
@@ -132,18 +190,11 @@ span {
 }
 
 .authorInfo {
-  /*height: 34%;*/
-  /*overflow: hidden;*/
+  
 }
 
 .authorInfo h2 {
   font-size: 18px;
-}
-
-.bookstores {
-  /*height: 66%;*/
-  padding-top: 0px;
-  overflow: scroll;;
 }
 
 .storeName {
@@ -152,7 +203,7 @@ span {
 
 .book-title{
   font-size:25px;
-}
+}*/
 
 .mapSec {
   border-right-style: solid;
@@ -193,6 +244,10 @@ span {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+.recDiv {
+  
 }
 
 .rec div {
@@ -318,11 +373,11 @@ h3 {
   font-size: 1em;
 }
 
-.recsgroup{
+.recsgroup {
   margin-left:35px;
   padding: 0;
   height: 250px;
-  width: 1440px;
+  width: 100vw;
   display: flex;
   justify-content: space-around;
   text-align: center;
@@ -331,7 +386,7 @@ h3 {
 .recsgroup1{
   padding: 0;
   height: 250px;
-  width: 1440px;
+  width: 100vw;
   display: flex;
   justify-content: space-around;
   text-align: center;
@@ -339,7 +394,7 @@ h3 {
 
 .newclass
 {
-  width: 190px;
+  width: 16.66vw;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -349,5 +404,13 @@ h3 {
 margin-left: auto;
 margin-right: auto;
 text-align:center;
+}
+
+.backbutton{
+  width: 55px;
+  height: 35px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 

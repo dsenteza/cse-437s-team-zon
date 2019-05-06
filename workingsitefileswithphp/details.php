@@ -16,7 +16,7 @@
   <!-- navigation bar -->
   <div class="navBar row">
     <a class="col-md-2"href="index.php"><img src="img/TeamAmazonLogo.png" height="60px" width="60px" alt="Team Amazon Logo"></a>
-    <a class="col-md-2"href="results.php">Back to Search</a>
+    <a class="col-md-2"href="results.php"><button class="backbutton">Back</button></a>
     <span class="col-md-2"></span>
     <a class="col-md-2" href="https://github.com/dsenteza/cse-437s-team-zon" target="_blank">Github</a>
     <a class="col-md-2" href="about.html">About</a>
@@ -78,11 +78,12 @@
   echo'<!-- book destails -->
   <div class="details row">
   <!-- edge spacer -->
-  <div class="col-md-1"></div>
+  <div class="col-md-1 col-sm-12"></div>
   <!-- below div will be an image of a book cover -->
-  <div class="col-md-2 bookImg"><img src="'.$image_url.'" width="190px" height="270px"/></div>
+  <div id="bookAuth">
+  <div class="col-md-2 col-sm-6 bookImg"><img src="'.$image_url.'" width="190px" height="270px"/></div>
   <!-- book description -->
-  <div class="col-md-2">
+  <div class="col-md-2 col-sm-6">
   <div class="authorInfo">
   <h1 class="book-title">'.htmlspecialchars($title).'</h1>
   <h4><span>Author: '.ucwords(strtolower(htmlspecialchars($author))).'</span></h4>
@@ -98,12 +99,13 @@
     </address>
     <p>'.$phoneNumber.'</p>
     <p class="distance">'.getDistance(getBookstoreAddress($store)).' miles away</p>
+    </div>
     </div>';
   }
   echo '</div>
   </div>
   <!-- map -->
-  <div class="col-md-4 mapSec">
+  <div class="col-md-4 col-sm-12 mapSec">
   <p>*call bookstores for prices*</p>
   <div class="map" id="map"></div>
   </div>';
@@ -132,7 +134,7 @@
 	
   echo'
   <!-- recommendations -->
-  <div class="col-md-2 studyRecs">
+  <div class="col-md-2 col-sm-12 studyRecs">
   <h2>Recommendations</h2>
   <div class="rec">
   <img src="'.$imageurl[$item1].'" width="100px" height="150px"/>
@@ -200,7 +202,7 @@
 	if (ucwords(strtolower(htmlspecialchars($book[2])))==""){
 	$book[2] = "Unknown";
         }
-	echo ' <div>
+	echo ' <div class="recDiv">
                <a href="details.php?isbn='.$book[0].'">
                <img src="'.$book[3].'" width="190px" height="270px"/>
                <p class = "newclass">'.$book[1].'<br/>'.ucwords(strtolower(htmlspecialchars($book[2]))).'</p>

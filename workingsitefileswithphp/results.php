@@ -35,7 +35,7 @@ session_start();
         <div class="radio">
           <input type="radio" name="searchType" value="title" <?php echo (strcmp(htmlentities($_SESSION['searchType']),'title')===0) ? 'checked' : ''?>> Title
           <input type="radio" name="searchType" value="author" <?php echo (strcmp(htmlentities($_SESSION['searchType']),'author')===0)? 'checked' : ''?>> Author
-          <input type="radio" name="searchType" value="isbn" <?php echo (strcmp(htmlentities($_SESSION['searchType']),'isbn')===0)? 'checked' : ''?>> ISBN
+          <input type="radio" name="searchType" value="isbn" <?php echo (strcmp(htmlentities($_SESSION['searchType']),'isbn')===0)? 'checked' : ''?>> ASIN
         </div>
       </form>
      </div>
@@ -133,7 +133,7 @@ if($mysqli->connect_errno) {
      echo "<br>";
      // echo "Bookstore: " .htmlspecialchars($bookstore);
      // echo '<br>';
-     echo "ISBN: " .htmlspecialchars($asin1);
+     echo "ASIN: " .htmlspecialchars($asin1);
      echo '</p>
    </div>
    <div class="col-md-2 distance">
@@ -144,6 +144,9 @@ if($mysqli->connect_errno) {
  </div>';
 
 	}
+  else{
+    echo "<br/><br/><h3 style='text-align:center'>Invalid ISBN.  Please try again.</h3>";
+  }
 
         }
         elseif(isset($_SESSION['searchTerm']) AND strcmp(htmlentities($_SESSION['searchType']),'title')===0){
@@ -186,6 +189,9 @@ if($mysqli->connect_errno) {
     $result = json_decode($result);
 
     foreach ($result->{'result'} as $book) {
+ if(ucwords(strtolower(htmlspecialchars($book[4])))==""){
+    $book[4] = "Unknown";
+    }
         echo '<div class="row searchResult">
      <!-- rectangles will be images -->
      <!-- <img src="'.htmlspecialchars($book[2]).'" height="90px" width="60px" -->
@@ -197,13 +203,13 @@ if($mysqli->connect_errno) {
       <a href="details.php?isbn='. htmlspecialchars($book[0]) .'"><h2>';
      echo htmlspecialchars($book[3]);
      echo "</h2></a><p>";
-     echo "Author: " . htmlspecialchars($book[4]);
+     echo "Author: " .  ucwords(strtolower(htmlspecialchars($book[4])));
      echo "<br>";
      echo "Category: " . htmlspecialchars($book[6]);
      echo "<br>";
      // echo "Bookstore: " .htmlspecialchars($bookstore);
      // echo '<br>';
-     echo "ISBN: " .htmlspecialchars(str_replace('.jpg','',$book[1]));
+     echo "ASIN: " .htmlspecialchars($book[0]);
      echo '</p>
    </div>
    <div class="col-md-2 distance">
@@ -260,6 +266,10 @@ if($mysqli->connect_errno) {
           if ($it>5){
             break;
           }
+
+	 if(ucwords(strtolower(htmlspecialchars($book[4])))==""){
+    		$book[4] = "Unknown";
+          }
         echo '<div class="row searchResult">
      <!-- rectangles will be images -->
      <!-- <img src="'.htmlspecialchars($book[2]).'" height="90px" width="60px" -->
@@ -271,13 +281,13 @@ if($mysqli->connect_errno) {
       <a href="details.php?isbn='. htmlspecialchars($book[0]) .'"><h2>';
      echo htmlspecialchars($book[3]);
      echo "</h2></a><p>";
-     echo "Author: " . htmlspecialchars($book[4]);
+     echo "Author: " . ucwords(strtolower(htmlspecialchars($book[4])));
      echo "<br>";
      echo "Category: " . htmlspecialchars($book[6]);
      echo "<br>";
      // echo "Bookstore: " .htmlspecialchars($bookstore);
      // echo '<br>';
-     echo "ISBN: " .htmlspecialchars(str_replace('.jpg','',$book[1]));
+     echo "ASIN: " .htmlspecialchars($book[0]);
      echo '</p>
    </div>
    <div class="col-md-2 distance">
@@ -297,6 +307,10 @@ if($mysqli->connect_errno) {
 
    $result = $stmt->get_result();
      while ($row = $result->fetch_assoc()){
+    
+    if(ucwords(strtolower(htmlspecialchars($row["author"])))==""){
+                $row["author"] = "Unknown";
+          }
    echo '<div class="row searchResult">
      <!-- rectangles will be images -->
      <!-- <img src="'.htmlspecialchars($row["image_url"]).'" height="90px" width="60px" -->
@@ -308,13 +322,13 @@ if($mysqli->connect_errno) {
      <a href="details.php?isbn='. htmlspecialchars($row["asin"]) .'"><h2>';
      echo htmlspecialchars($row["title"]);
      echo "</h2></a><p>";
-     echo "Author: " . htmlspecialchars($row["author"]);
+     echo "Author: " .  ucwords(strtolower(htmlspecialchars($row["author"])));
      echo "<br>";
      echo "Category: " . htmlspecialchars($row["category"]);
      echo "<br>";
      // echo "Bookstore: " .htmlspecialchars($row["name"]);
      //  echo '<br>';
-     echo "ISBN: " .htmlspecialchars($row["asin"]);
+     echo "ASIN: " .htmlspecialchars($row["asin"]);
      echo '</p>
    </div>
    <div class="col-md-2 distance">

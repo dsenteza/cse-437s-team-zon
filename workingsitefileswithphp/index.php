@@ -31,17 +31,17 @@
         <div class="radio">
           <input type="radio" name="searchType" checked="true" value="title"> Title
           <input type="radio" name="searchType" value="author"> Author
-          <input type="radio" name="searchType" value="isbn"> ISBN
+          <input type="radio" name="searchType" value="isbn"> ASIN
         </div>
       </form>
     <div class="col-md-3"></div>
     </div>
     <!-- header image -->
-    <!--<div id="header" class="row">
+    <div id="header" class="row">
       <div class="col-md-6 col-sm-12"></div>
       <h1 class="col-md-5 col-sm-12">Team zon</h1>
       <div class="col-md-1 col-sm-12"></div>
-    </div>-->
+    </div>
     <div id="hotBooks">
     <br/>
     <h3>Trending Books:</h3>
