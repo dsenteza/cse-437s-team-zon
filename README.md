@@ -26,7 +26,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.-->
 
-# Team Amazon
+# [Team Amazon](http://ec2-13-59-74-236.us-east-2.compute.amazonaws.com/new_frontend/workingsitefileswithphp/index.php)
 
 <img src="./Screenshots/TeamAmazonLogo.png" alt = "Team Amazon Logo" width="350"/>
 
