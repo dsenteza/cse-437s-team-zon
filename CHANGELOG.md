@@ -22,7 +22,7 @@ Changes are grouped by version.
 - Removed previous exact search from MVP.
 - Removed old map code because initially hardcoded elements.
 
-## 0.5.0 - 3/6/2019
+## 0.1.0 - 3/6/2019
 ### Added
 - Added initial website framework containing initial search, results display page and details page for each book.
 - The search queries the MYSQL database for exact author, title, and ASIN.
