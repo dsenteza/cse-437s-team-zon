@@ -26,13 +26,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.-->
 
-# Team Amazon
+# [Team Amazon](http://ec2-13-59-74-236.us-east-2.compute.amazonaws.com/new_frontend/workingsitefileswithphp/index.php)
 
 <img src="./Screenshots/TeamAmazonLogo.png" alt = "Team Amazon Logo" width="350"/>
 
 <!-- Button that links to our website-->
 
-[![PyPI](https://img.shields.io/badge/Team%20Amazon%20Site-Find%20Books%20in%20St.%20Louis-yellow.svg)](http://ec2-13-59-74-236.us-east-2.compute.amazonaws.com/website/index.php)
+[![PyPI](https://img.shields.io/badge/Team%20Amazon%20Site-Find%20Books%20in%20St.%20Louis-yellow.svg)](http://ec2-13-59-74-236.us-east-2.compute.amazonaws.com/new_frontend/workingsitefileswithphp/index.php)
 
 **Team Amazon** is a web application for finding books in the St. Louis area.
 
