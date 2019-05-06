@@ -13,16 +13,16 @@
   <?php
   session_start();
   ?>
-  <!-- navigation bar -->
-  <div class="navBar row">
-    <a class="col-md-2"href="index.php"><img src="img/TeamAmazonLogo.png" height="60px" width="60px" alt="Team Amazon Logo"></a>
-    <a class="col-md-2"href="results.php"><button class="backbutton">Back</button></a>
-    <span class="col-md-2"></span>
-    <a class="col-md-2" href="https://github.com/dsenteza/cse-437s-team-zon" target="_blank">Github</a>
-    <a class="col-md-2" href="about.html">About</a>
-    <a class="col-md-2" href="doc.html">Documentation</a>
-  </div>
+<!-- navigation bar -->
+    <div class="navBar row">
+      <a class="col-md-2"href="index.php"><img src="img/TeamAmazonLogo.png" height="60px" width="60px" alt="Team Amazon Logo"></a>
+      <span class="col-md-4"></span>
+      <a class="col-md-2" href="https://github.com/dsenteza/cse-437s-team-zon" target="_blank">Github</a>
+      <a class="col-md-2" href="about.html">About</a>
+      <a class="col-md-2" href="doc.html">Documentation</a>
+    </div>
   <?php
+
   function getDistance($bookstoreAddress)
   {
     $from = "38.647867,-90.3068304"; // Assume the user is at LOPATA HALL
@@ -49,15 +49,20 @@
       "Subterranean Books"=>"6275 Delmar Blvd, St. Louis, MO 63130", "The Wizards Wagon"=>"6388 Delmar Blvd, University City, MO 63130","Fontbonne Bookstore"=>"6800 Wydown Blvd, St. Louis, MO 63105","Left Bank Books"=>"399 N Euclid Ave, St. Louis, MO 63108");
     return $bookstoreAddress[$bookstoreName];
   }
+
 //session_start();
 //session_start();
 //establish connection
   $bookstores = [];
   $i=0;
   $mysqli = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
+
   $stmt = $mysqli->prepare("select asin,title,author,category,image_url,phonenumber,bookstoredatabase.name from booksdatabase4 join bookstoredatabase on (booksdatabase4.bookstore_id=bookstoredatabase.id) where asin = '$_GET[isbn]'");
+
   $stmt->execute();
+
   $stmt->bind_result($asin1,$title,$author,$category,$image_url,$phoneNumber,$bookstore);
+
   while ($stmt->fetch()){
     $bookstores[$i] = $bookstore;
     ++$i;
@@ -68,46 +73,55 @@
   if (count($bookstores) == 0){
     header("Location: index.php");
   }
-  echo'<!-- book destails -->
-  <div class="details row">
-  <!-- edge spacer -->
-  <div class="col-md-1 col-sm-12"></div>
-  <!-- below div will be an image of a book cover -->
-  <div id="bookAuth">
-  <div class="col-md-2 col-sm-6 bookImg"><img src="'.$image_url.'" width="190px" height="270px"/></div>
-  <!-- book description -->
-  <div class="col-md-2 col-sm-6">
-  <div class="authorInfo">
-  <h1 class="book-title">'.htmlspecialchars($title).'</h1>
-  <h4><span>Author: '.ucwords(strtolower(htmlspecialchars($author))).'</span></h4>
-  <p>'.htmlspecialchars($category).'</p>
+
+  echo'<!-- book details -->
+  <div class="row">
+    <a class="col-md-2 button" href="results.php">&laquo; back</a>
   </div>
-  <!-- list of bookstores nearby -->
-  <div class="bookstores">';
-  foreach ($bookstores as $store){
-    echo '<div class="store">
-    <p class="storeName">'.htmlspecialchars($store).'</p>
-    <address>
-    '.getBookstoreAddress($store).'
-    </address>
-    <p>'.$phoneNumber.'</p>
-    <p class="distance">'.getDistance(getBookstoreAddress($store)).' miles away</p>
+  <br><br>
+  <div class="row">
+    <!--edge spacer-->
+    <div class="col-md-1"></div>
+    <!-- book image-->
+    <div class="col-md-2">
+      <img width="150vw" src="'.$image_url.'"/>
     </div>
+    <!--book description and information->
+    <div class="col-md-3">
+      <div class="authorInfo">
+        <h1 class="book-title">'.htmlspecialchars($title).'</h1>
+        <h4><span>Author: '.ucwords(strtolower(htmlspecialchars($author))).'</span></h4>
+        <p>'.htmlspecialchars($category).'</p>
+      </div>
+      <!-- list of bookstores that have it-->
+      <div class="bookstores">';
+        foreach ($bookstores as $store){
+        echo '<div class="store">
+                <p class="storeName">'.htmlspecialchars($store).'</p>
+                <address>
+                  '.getBookstoreAddress($store).'
+                </address>
+                <p>'.$phoneNumber.'</p>
+                <p class="distance">'.getDistance(getBookstoreAddress($store)).' miles away</p>
+              </div>
+        </div>
+      </div>
     </div>';
   }
-  echo '</div>
-  </div>
-  <!-- map -->
-  <div class="col-md-4 col-sm-12 mapSec">
-  <p>*call bookstores for prices*</p>
-  <div class="map" id="map"></div>
-  </div>';
+  echo '<!-- map -->
+    <div class="col-md-4 mapSec">
+      <p>*call bookstores for prices*</p>
+      <div class="map" id="map"></div>
+    </div>';
   $suggestions = [];
   $imageurl = [];
   $i1=0;
   $mysqli1 = new mysqli('localhost', 'l.florence', 'PASSWORD', '437s');
+
   $stmt1 = $mysqli1->prepare("select * from supplementaryitems");
+
   $stmt1->execute();
+
   //$stmt1->bind_result($name,$long_name, $num,$manufacturer,$fit,$brand,$vendor,$price,$image_url);
   $result = $stmt1->get_result();
   while ($row = $result->fetch_assoc()){
@@ -121,82 +135,100 @@
   $item2 = mt_rand(8,15);
   $item3 = mt_rand(16,23);
   $item4 = mt_rand(24,29);
-  
+	
   echo'
-  <!-- recommendations -->
-  <div class="col-md-2 col-sm-12 studyRecs">
-  <h2>Recommendations</h2>
-  <div class="rec">
-  <img src="'.$imageurl[$item1].'" width="100px" height="150px"/>
-  <a href="#">'.$suggestions[$item1].'</a>
-  </div>
-  <div class="rec">
-  <img src="'.$imageurl[$item2].'" width="100px" height="150px"/>
-  <a href="#">'.$suggestions[$item2].'</a>
-  </div>
-  <div class="rec">
-  <img src="'.$imageurl[$item3].'" width="100px" height="150px"/>
-  <a href="#">'.$suggestions[$item3].'</a>
-  </div>
-  <div class="rec">
-  <img src="'.$imageurl[$item4].'" width="100px" height="150px"/>
-  <a href="#">'.$suggestions[$item4].'</a>
-  </div>
+    <!-- recommendations -->
+    <div class="col-md-2 studyRecs">
+      <h2>Recommendations</h2>
+      <div class="rec">
+        <img src="'.$imageurl[$item1].'" width="100px" height="150px"/>
+        <p>'.$suggestions[$item1].'</p>
+      </div>
+      <div class="rec">
+        <img src="'.$imageurl[$item2].'" width="100px" height="150px"/>
+        <p>'.$suggestions[$item2].'</p>
+      </div>
+      <div class="rec">
+        <img src="'.$imageurl[$item3].'" width="100px" height="150px"/>
+        <p>'.$suggestions[$item3].'</p>
+      </div>
+      <div class="rec">
+        <img src="'.$imageurl[$item4].'" width="100px" height="150px"/>
+        <p>'.$suggestions[$item4].'</p>
+      </div>
+    </div>
+  <!-- finishes off the row -->
   </div>';
    
       //API URL
     $url = 'http://does.fyi:3456/rpc';
+
     //create a new cURL resource
     $ch = curl_init($url);
+
     //setup request to send json via POST
     $data = array(
         'acin' => $asin1,
         'numOfResults' => 3
     );
+
     $stuff = array(
         "params" => $data,
         "method" => "Cambridge.getBookRecommendations",
         "id" => "1"
     );
+
     $payload = json_encode($stuff);
+
     //attach encoded JSON string to the POST fields
     curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+
     //set the content type to application/json
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+
     //return response instead of outputting
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
     //execute the POST request
     $result = curl_exec($ch);
+
     //close cURL resource
     curl_close($ch);
+
    $result = json_decode($result);
     echo '  <!-- recommendations -->
   <hr>
+
   <div class="row">
   <h3 id="youmayalsolike">You May Also Like</h3>
     <div class="recsgroup">
       <!-- the below three divs will be book images -->';
+
     foreach ($result->{'result'} as $book) {
-  if (ucwords(strtolower(htmlspecialchars($book[2])))==""){
-  $book[2] = "Unknown";
+	if (ucwords(strtolower(htmlspecialchars($book[2])))==""){
+	$book[2] = "Unknown";
         }
-  echo ' <div class="recDiv">
+	echo ' <div class="recDiv">
                <a href="details.php?isbn='.$book[0].'">
                <img src="'.$book[3].'" width="190px" height="270px"/>
                <p class = "newclass">'.$book[1].'<br/>'.ucwords(strtolower(htmlspecialchars($book[2]))).'</p>
                </a></div>';
     }
+
+
   ?>
     </div>
   </div>
   <script>
   var geocoder;
+
   function initMap() {
         //define the center of the map and its zooming
         //may adjust it accordingly
         let option = {
           zoom: 13,
           center: {lat: 38.6472923, lng: -90.288}
+
         },
         map = new google.maps.Map(document.getElementById('map'), option);
         let bookstores = document.getElementsByClassName("storeName");//get the bookstore names from the dom
@@ -208,11 +240,13 @@
         bookstoreMap.set('Left Bank Books', "399 N Euclid Ave, St. Louis, MO 63108");
         bookstoreMap.set('The Wizards Wagon', "6388 Delmar Blvd, University City, MO 63130");
         bookstoreMap.set('Fontbonne Bookstore', "6800 Wydown Blvd, St. Louis, MO 63105");
+
         phoneNumberMap.set('Washington University Campus Store', "(314) 935-5500");
         phoneNumberMap.set('Subterranean Books', "(314) 862-6100");
         phoneNumberMap.set('Left Bank Books', "(314) 367-6731");
         phoneNumberMap.set('The Wizards Wagon', "(314) 862-4263");
         phoneNumberMap.set('Fontbonne Bookstore', "(314) 889-1420");
+
         geocoder = new google.maps.Geocoder();
         //infoWindow = new google.maps.InfoWindow;
         //Looping the bookstores and add them to the map
@@ -223,10 +257,15 @@
           console.log(bookstoreName);
           console.log(bookstoreLoc);
           addMarker(bookstoreLoc,bookstoreName, map, phone);
+
         }
+
       }
+
+
         //Function that add marks to the map
         function addMarker(coords,storeName, markMap, phoneNumber){
+
           geocoder.geocode({'address': coords}, function(results, status) {
           if (status === 'OK') {
             console.log(results[0]);
@@ -248,6 +287,7 @@
             alert('Geocode was not successful for the following reason: ' + status);
           }
           });
+
         }
 </script>
 <!--Calling google api-->

@@ -39,7 +39,7 @@
     <!-- header image -->
     <div id="header" class="row">
       <div class="col-md-6 col-sm-12"></div>
-      <h1 class="col-md-5 col-sm-12">Team zon</h1>
+      <h1 class="col-md-5 col-sm-12" id="zon">Team zon</h1>
       <div class="col-md-1 col-sm-12"></div>
     </div>
     <div id="hotBooks">
