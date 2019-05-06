@@ -3,6 +3,24 @@ All notable changes to our site will be documented in this file.
 
 Changes are grouped by version.
 
+## 1.0.0 - 5/5/2019
+### Added
+- Added code for interaction with Cambridge Team's RPC
+- Added supplementary items like pens, pencils and notebooks based on client's recommendations
+- Added currently tredning books based on client's recommendations
+- Added back button to allow for easier maneuvering between pages
+- Added Github Link
+- Added FAQ section in About Page
+- Added Documentation Page
+
+### Changed
+- Updated CSS to be browser responsive
+- Updated display to handle the supplementary items and to handle different map layout
+- Changed the map to be responsive as well as allow pop-ups and different views
+
+### Removed
+- Remove previous exact search from MVP
+
 ## 0.5.0 - 4/10/2019
 ### Added
 
@@ -25,4 +43,4 @@ Changes are grouped by version.
 - [60b41b8] started search function, added ids to elements in the index file
 - [799ba88] css added for rough prototype
 - [cdc40c2] just to html so far, will commit with styling this afternoon
-- [b489237] Initial commit
+- [0.0.1] Initial commit
